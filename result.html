@@ -6,9 +6,13 @@
     body {
       margin: 0;
       background: transparent;
-      font-size: 36px;
+      font-size: 30px;
       font-family: Diablo;
       color: White;
+       white-space: normal;   /* tekst może się łamać */
+  word-wrap: break-word; /* jeśli mega długa nazwa, np. bez spacji, to też się złamie */
+  overflow-wrap: break-word;
+  text-align: center;    /* opcjonalnie żeby było ładnie na środku */
     }
   </style>
 </head>
@@ -21,7 +25,7 @@
   const el = document.getElementById("result");
 
   if (!stored) {
-    el.innerHTML = "Class: just roll"; // <- wraca do domyślnego
+    el.innerHTML = "Class: Just choose your destiny"; // <- wraca do domyślnego
     return;
   }
 
