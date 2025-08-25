@@ -9,10 +9,11 @@
       font-size: 30px;
       font-family: Diablo;
       color: White;
-       white-space: normal;   /* tekst może się łamać */
-  word-wrap: break-word; /* jeśli mega długa nazwa, np. bez spacji, to też się złamie */
-  overflow-wrap: break-word;
-  text-align: center;    /* opcjonalnie żeby było ładnie na środku */
+      white-space: normal;   
+      word-wrap: break-word; 
+      overflow-wrap: break-word;
+      text-align: center;  
+      text-transform: uppercase; 
     }
   </style>
 </head>
@@ -25,7 +26,7 @@
   const el = document.getElementById("result");
 
   if (!stored) {
-    el.innerHTML = "Class: Just choose your destiny"; // <- wraca do domyślnego
+    el.innerHTML = "Class: Just choose your destiny"; 
     return;
   }
 
