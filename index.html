@@ -84,6 +84,9 @@
 <body>
   <button id="spinButton" class="button">Choose destiny</button>
   <button id="resetButton" class="button">Reset</button>
+  <div style="position:absolute; top:120px; left:10px; width:220px; display:flex; flex-direction:column; gap:10px;">
+    <iframe src="counter.html" width="220" height="120" style="border:none; background:transparent;"></iframe>
+    <iframe src="result.html" width="220" height="120" style="border:none; background:transparent;"></iframe>
   <div id="resultText">Score: —</div>
   <div id="counter">Rolls: 0</div>
   <div id="endMessage">You died a lot of time</div>
@@ -179,7 +182,7 @@
   "Voicebreaker (HA/Warhammer/Shouts)",
   "Witch Hunter (Bound Xbow/LA/Destro entropy)",
   "Witcher (2h/LA/Alchemy)",
-  "Wizard (Enchanting/Destro/only Wands/Trait 'Wizard\'s Wardrobe')"]; // ← zostaw tu swoją listę segmentów
+  "Wizard (Enchanting/Destro/only Wands/Trait 'Wizard\'s Wardrobe')"]; 
 
     let segments = JSON.parse(localStorage.getItem('segments')) || [...originalSegments];
     let spinCount = parseInt(localStorage.getItem("spinCount")) || 0;
@@ -393,7 +396,6 @@
     animate();
   </script>
 
-    <iframe src="counter.html" width="400" height="300" style="border:none; background:white;"></iframe>
-  <iframe src="result.html" width="400" height="300" style="border:none; background:white;"></iframe>
+
 </body>
 </html>

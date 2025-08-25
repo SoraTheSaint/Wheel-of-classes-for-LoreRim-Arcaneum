@@ -13,16 +13,16 @@
   </style>
 </head>
 <body>
-  <div id="counter">Zgony / Death: 0</div>
+  <div id="counter">Death: 0</div>
 
   <script>
     function updateCounter() {
       const count = parseInt(localStorage.getItem("spinCount")) || 0;
-      document.getElementById("counter").textContent = "Zgony / Deaths : " + count;
+      document.getElementById("counter").textContent = "Deaths : " + count;
     }
 
     updateCounter();
-    setInterval(updateCounter, 500); // aktualizuj co pół sekundy
+    setInterval(updateCounter, 500); 
   </script>
 </body>
 </html>
