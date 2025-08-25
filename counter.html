@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      margin: 0;
+      background: transparent;
+      font-size: 90px;
+      font-family: Ghastly Panic;
+      color: Red;
+    }
+  </style>
+</head>
+<body>
+  <div id="counter">Zgony / Death: 0</div>
+
+  <script>
+    function updateCounter() {
+      const count = parseInt(localStorage.getItem("spinCount")) || 0;
+      document.getElementById("counter").textContent = "Zgony / Deaths : " + count;
+    }
+
+    updateCounter();
+    setInterval(updateCounter, 500); // aktualizuj co pół sekundy
+  </script>
+</body>
+</html>
