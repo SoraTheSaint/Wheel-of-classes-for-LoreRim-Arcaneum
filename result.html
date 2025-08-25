@@ -16,9 +16,14 @@
   <div id="result">Class: Just choose your destiny</div>
 
   <script>
-    function updateResult() {
+   function updateResult() {
   const stored = localStorage.getItem("lastResult");
-  if (!stored) return; // zostaw "Class: just roll" dopóki nie ma wyniku
+  const el = document.getElementById("result");
+
+  if (!stored) {
+    el.innerHTML = "Class: just roll"; // <- wraca do domyślnego
+    return;
+  }
 
   const match = stored.match(/^([^(]+)(\(.*\))?$/);
   let mainName = stored;
@@ -29,9 +34,9 @@
     parentheses = match[2] ? match[2].trim() : "";
   }
 
-  document.getElementById("result").innerHTML =
-    `Class: ${mainName}` + (parentheses ? `<br>${parentheses}` : "");
+  el.innerHTML = `Class: ${mainName}` + (parentheses ? `<br>${parentheses}` : "");
 }
+
 
 // ← aaaa
     updateResult();
