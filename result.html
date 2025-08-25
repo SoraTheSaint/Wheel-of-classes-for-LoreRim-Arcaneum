@@ -17,20 +17,22 @@
 
   <script>
     function updateResult() {
-      const result = localStorage.getItem("lastResult") || "brak";
-      const match = result.match(/^([^\(]+)(\(.*\))?$/);
-      let mainName = result;
-      let parentheses = "";
+  const stored = localStorage.getItem("lastResult");
+  if (!stored) return; // zostaw "Class: just roll" dopóki nie ma wyniku
 
-      if (match) {
-        mainName = match[1].trim();
-        parentheses = match[2] ? match[2].trim() : "";
-      }
+  const match = stored.match(/^([^(]+)(\(.*\))?$/);
+  let mainName = stored;
+  let parentheses = "";
 
-      document.getElementById("result").innerHTML = 
-        `Klasa/Class: ${mainName}` + 
-        (parentheses ? `<br>${parentheses}` : "");
-    }
+  if (match) {
+    mainName = match[1].trim();
+    parentheses = match[2] ? match[2].trim() : "";
+  }
+
+  document.getElementById("result").innerHTML =
+    `Klasa/Class: ${mainName}` + (parentheses ? `<br>${parentheses}` : "");
+}
+
 // ← aaaa
     updateResult();
     setInterval(updateResult, 500);

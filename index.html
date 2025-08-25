@@ -302,8 +302,6 @@
           highlightTimer = performance.now();
           lastResultToRemove = result;
 
-         spinCount++;
-        
           counterText.textContent = "Rolls: " + spinCount;
           resultText.textContent = "Score: " + result;
           soundSelect.play();
@@ -354,38 +352,51 @@
       saveState();
     }
 
-    spinButton.addEventListener('click', () => {
-      if (spinning) return;
+   spinButton.addEventListener('click', () => {
+  if (spinning) return;
 
-      if (ended) {
-        endMessage.style.display = "block";
-        canvas.style.display = "none";
-        spinButton.style.display = "none";
-        soundEnd.play();
-        spinButton.disabled = true;
+ 
+  if (lastResultToRemove !== null) {
+    const idx = segments.indexOf(lastResultToRemove);
+    if (idx !== -1) {
+      segments.splice(idx, 1);
 
-        setTimeout(() => {
-          spinButton.disabled = false;
-          endMessage.style.display = "none";
-          spinButton.style.display = "block";
-          canvas.style.display = "block";
-          resetAll();
-        }, 4000);
-        return;
-      }
+     
+      spinCount++;
+      counterText.textContent = "Rolls: " + spinCount;
+    }
+    lastResultToRemove = null;
+    saveState();
+  }
 
-      if (lastResultToRemove !== null) {
-        const idx = segments.indexOf(lastResultToRemove);
-        if (idx !== -1) {
-          segments.splice(idx, 1);
-          lastResultToRemove = null;
-          saveState();
-        }
-      }
+ 
+  if (segments.length === 0 || ended) {
+    ended = true;
+    spinButton.textContent = "The End";
+    resetButton.style.display = "none";
+    pointer.style.display = "none";
 
-      spinVelocity = Math.random() * 0.3 + 0.3 * 2;
-      spinning = true;
-    });
+    
+    endMessage.style.display = "block";
+    canvas.style.display = "none";
+    soundEnd.play();
+    spinButton.style.display = "none";
+    spinButton.disabled = true;
+    setTimeout(() => {
+      spinButton.disabled = false;
+      endMessage.style.display = "none";
+      spinButton.style.display = "block";
+      canvas.style.display = "block";
+      resetAll();
+    }, 4000);
+    return;
+  }
+
+
+  spinVelocity = Math.random() * 0.3 + 0.3 * 2;
+  spinning = true;
+});
+
 
     resetButton.addEventListener('click', resetAll);
 
