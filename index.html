@@ -302,12 +302,8 @@
           highlightTimer = performance.now();
           lastResultToRemove = result;
 
-          if (!firstSpinAfterReset) {
-            spinCount++;
-          } else {
-            firstSpinAfterReset = false;
-          }
-
+         spinCount++;
+        
           counterText.textContent = "Rolls: " + spinCount;
           resultText.textContent = "Score: " + result;
           soundSelect.play();
@@ -340,8 +336,7 @@
       highlightedIndex = null;
       highlightTimer = 0;
       ended = false;
-      firstSpinAfterReset = true;
-
+  
       endMessage.style.display = "none";
       spinButton.textContent = "Choose destiny";
       spinButton.style.display = "block";
