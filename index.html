@@ -2,14 +2,14 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8" />
-  <title>Koło Fortuny - Usuwanie segmentów z localStorage</title>
+  <title>Wheel of Classes - LoreRim Arcaneum </title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Ghastly+Panic&display=swap');
 
     html, body {
       margin: 0;
       padding: 0;
-      background: transparent;
+      background: black;
       overflow: hidden;
       font-family: sans-serif;
       user-select: none;
@@ -84,9 +84,9 @@
 <body>
   <button id="spinButton" class="button">Choose destiny</button>
   <button id="resetButton" class="button">Reset</button>
-  <div id="resultText">Wynik: —</div>
-  <div id="counter">Obroty: 0</div>
-  <div id="endMessage">You died a lot you fucking moron - Zabiłeś całe koło</div>
+  <div id="resultText">Score: —</div>
+  <div id="counter">Rolls: 0</div>
+  <div id="endMessage">You died a lot of time</div>
   <div id="pointer"></div>
   <canvas id="wheelCanvas" width="900" height="900"></canvas>
 
@@ -190,7 +190,7 @@
     let ended = false;
     let firstSpinAfterReset = false;
 
-    counterText.textContent = "Obroty: " + spinCount;
+    counterText.textContent = "Rolls: " + spinCount;
 
     function saveState() {
       localStorage.setItem('segments', JSON.stringify(segments));
@@ -300,8 +300,8 @@
             firstSpinAfterReset = false;
           }
 
-          counterText.textContent = "Obroty: " + spinCount;
-          resultText.textContent = "Wynik: " + result;
+          counterText.textContent = "Rolls: " + spinCount;
+          resultText.textContent = "Score: " + result;
           soundSelect.play();
           saveState();
 
@@ -340,8 +340,8 @@
       resetButton.style.display = "block";
       pointer.style.display = "block";
       canvas.style.display = "block";
-      resultText.textContent = "Wynik: —";
-      counterText.textContent = "Obroty: " + spinCount;
+      resultText.textContent = "Score: —";
+      counterText.textContent = "Rolls: " + spinCount;
 
       localStorage.removeItem('segments');
       localStorage.removeItem('spinCount');
