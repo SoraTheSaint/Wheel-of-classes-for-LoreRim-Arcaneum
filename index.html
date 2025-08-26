@@ -2,6 +2,7 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Wheel of Classes - LoreRim Arcaneum </title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Ghastly+Panic&display=swap');
@@ -78,6 +79,23 @@
       z-index: 15;
       pointer-events: none;
       user-select: none;
+    }
+        /* mobile */
+    @media (max-width: 768px) {
+      canvas {
+        width: 90vw;   
+        height: 90vw;  
+      }
+
+      button {
+        font-size: 16px;
+        padding: 10px 18px;
+      }
+
+      iframe {
+        width: 90%;   
+        height: 100px;
+      }
     }
   </style>
 </head>
