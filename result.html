@@ -46,6 +46,10 @@
     parentheses = match[2] ? match[2].trim() : "";
   }
 
+  // Dodaj <wbr> po każdym "/"
+  mainName = mainName.replace(/\//g, "/<wbr>");
+  parentheses = parentheses.replace(/\//g, "/<wbr>");
+
   el.innerHTML = `Class: ${mainName}` + (parentheses ? `<br>${parentheses}` : "");
 }
 

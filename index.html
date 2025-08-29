@@ -121,7 +121,7 @@
       max-width: 90%;
       text-align: center;
       font-family: 'Ghastly Panic', cursive;
-      font-size: 50px;
+      font-size: 90px;
       color: #8B0000;
       background-color: rgba(0, 0, 0, 0.8);
       font-weight: bold;
@@ -189,6 +189,10 @@
     border-right: 15px solid transparent;
     border-top: 25px solid #e91e63;
   }
+  #endMessage {
+    font-size: 36px; /* mniejszy rozmiar na mobile */
+    padding: 10px;
+  }
 }
 
 
@@ -210,7 +214,7 @@
 
   <div id="resultText">Score: —</div>
   <div id="counter">Rolls: 0</div>
-  <div id="endMessage">You died many times - GAME OVER.</div>
+  <div id="endMessage">You died too many times - GAME OVER.</div>
   <div class="wheel-container">
   <div id="pointer"></div>
   <canvas id="wheelCanvas" width="900" height="900"></canvas>
@@ -303,7 +307,8 @@
   "Voicebreaker (HA/Warhammer/Shouts)",
   "Witch Hunter (Bound Xbow/LA/Destro entropy)",
   "Witcher (2h/LA/Alchemy)",
-  "Wizard (Enchanting/Destro/only Wands/Trait 'Wizard\'s Wardrobe')"]; 
+  "Wizard (Enchanting/Destro/only Wands/Trait 'Wizard\'s Wardrobe')",
+"Warlock (Destruction/Conjuration/Illusion)"]; 
 
     let segments = JSON.parse(localStorage.getItem('segments')) || [...originalSegments];
     let spinCount = parseInt(localStorage.getItem("spinCount")) || 0;
@@ -480,9 +485,11 @@
     if (idx !== -1) {
       segments.splice(idx, 1);
 
-     
-      spinCount++;
-      counterText.textContent = "Rolls: " + spinCount;
+      // TYLKO inkrementuj spinCount, jeśli segment został usunięty i NIE jest to koniec gry
+      if (segments.length > 0) {
+        spinCount++;
+        counterText.textContent = "Rolls: " + spinCount;
+      }
     }
     lastResultToRemove = null;
     saveState();
