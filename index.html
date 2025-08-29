@@ -56,7 +56,7 @@
 /* kontener koła */
 .wheel-container {
   position: relative;
-  margin-top: -50px;
+  margin-top: -40px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -95,7 +95,7 @@
 }
    .result-frame
    {
-    width: 400px;
+    width: 500px;
     height: 150px;   /* było 120px – obniżamy */
      border: none;
   background: transparent;
@@ -202,8 +202,10 @@
 </head>
 <body>
   <div class="header">
-  <h3>Wheel of Classes - LoreRim Arcaneum +PERMADEATH+EDITION+</h3>
-
+  <h3>
+    Wheel of Classes - LoreRim Arcaneum
+    <span style="color:#dc3545;">+PERMADEATH+EDITION+</span>
+  </h3>
 </div>
 <div class="top-bar">
   <button id="spinButton" class="button">Choose destiny</button>
@@ -239,29 +241,30 @@
     const originalSegments = ["Aethermage (Shock Magic/Heavy Armor/Trait 'Disbeliever'/Finesse)",
   "Alchemist (Alchemy/Traps/Poison)",
   "Ancient Runesmith (Dwemer Smithing, Enchanting, Runes, Automatons)",
-  "Arcane Mage (Arcane Destro)",
+  "Arcane Mage (Arcane Destro/Trait 'Focused Magic')",
   "Ashblade Dervish (LA/Scimitar/Destruction Fire Touch spells)",
   "Assassin (stealth/daggers/Alchemy (Poison-focused))",
   "Aurafist (Unarmed/Restoration/Alteration)",
+  "Archmage (Every School of Magic/Trait 'Self-taught'/Trait 'Skilled'/Deity 'Magnus'/Destiny Archmage/Only Mage's Robes)",
   "Battlemage (HA/Destro Touch spell/Quarter Staff)",
-  "Berserker (2H Axe/Unarmored/trait 'Rage')",
+  "Berserker (2H Axe/Unarmored/trait 'Rage'/Trait 'Big Swing')",
   "Blightborn (Alchemy/Restoration Poison/Trait 'Defiler')",
-  "Blood Knight (2H Sword/HA/Blood cloak)",
-  "Blood Mage (Blood destro) => Vampire",
+  "Blood Knight (2H Sword/HA/Blood cloak/trait 'Blood Warrior')",
+  "Blood Mage (Blood destro/Trait 'Focused Magic') => Vampire",
   "Boltwarden (HA/Heavy Crossbow)",
   "Brawler (Unarmored/Unarmed/No spells/Dodge)",
   "Brewmaster (Staff/Alchemy/Trait 'Addict')",
   "Companion of Jorrvaskr (HA 'Wolf Armor'/2H Axe/Werewolf)",
-  "Cryomancer (Cryo Destro)",
+  "Cryomancer (Cryo Destro/Trait 'Focused Magic')",
   "Dawnguard Sentinel (Restoration/Archery) <by Cor Wulfgar>",
   "Death Knight (2H/HA/Conjuration Necro)",
   "Dragon Slayer (LA/Nodachi 2h)",
-  "Dragonborn of the North (1h/Block/Shouts/HA/Trait 'Old Fashioned')",
+  "Dragonborn of the North (1h/Block/Shouts/HA/Trait 'Old Fashioned'/Trait 'Quester')",
   "Dragoon (Heavy armor/2H Spear/Horse Combat)",
   "Druid (Alteration Transform/LA/Conjuration Spirit/trait 'Druid')",
-  "Electromancer (Electro Destro)",
+  "Electromancer (Electro Destro/Trait 'Focused Magic')",
   "Elementalist (Fire/Cryo/Electro Destro)",
-  "Entropic Wizard (Entropic Destro)",
+  "Entropic Wizard (Entropic Destro/Trait 'Focused Magic')",
   "Explorer (LA/Whip/Torch)",
   "Flameforged Champion (HA/GS/Fire Cloak)",
   "Frostbound Titan (HA/Warhammer/Cryo Cloak)",
@@ -275,19 +278,20 @@
   "Harbinger of Oblivion (Conjuration/Destruction/Only deadric items)",
   "Hexblade (Bound Sword/Conjuration/Fire Destro)",
   "Hunter (LA/ light Bow)",
-  "Iron Rose/Duelist (Rapier with empty hand perk/LA)",
+  "Iron Rose/Duelist (Rapier with empty hand perk/LA/Trait 'Fencer')",
   "Mesmer (Illusion/Rapier)",
-  "Necromancer (Conjuration Necro) => Dread Lich (Conjuration/Alteration/Necromancy/Unarmored)",
+  "Necromancer (Conjuration Necro/Trait 'Plauged Mind')",
   "Nightblade (Sneak/Illussion)",
   "Oathbound Defender (1H/Block/Restoration/Speech/Heavy Armor)",
   "Occultist (Entropy/Conjuration/Scrolls)",
   "Paladin Meridia (1h/Sun Resto/HA)",
   "Phantom Ranger (Sneak/Bound Bow/LA)",
-  "Plauge Knight (HA/Mace/Resto poisions)",
-  "Priestess Dibella (Female/Ilussion/Speech/Trait 'Au Naturel') -> Dreamwalker (Illusion/Alteration/Speech)",
+  "Plauge Knight (HA/Mace/Resto poisions/Trait 'Balanced Casting')",
+  "Priestess Dibella (Female/Ilussion/Speech/Trait 'Au Naturel')",
+  "Dreamwalker (Illusion/Alteration/Speech)",
   "Priestess Mara (Restoration/Speech)",
   "Primal Forsworn (dual axes/Alteration/Spirit Conjuration/Forsworn armor)",
-  "Pyromancer (Fire Destro)",
+  "Pyromancer (Fire Destro/Trait 'Focused Magic')",
   "Runecaster (Runes/Destruction/Illusion or Alchemy)",
   "Runespear (Enchanting/Alteration/2h Spear)",
   "Shadowdancer (Light Armor/Illusion/Daggers/No sneak)",
@@ -299,7 +303,7 @@
   "Spiritstalker (LA/Bow/Spirit conjuration)",
   "Stendar Zealot (2H/Unarmored/Block)",
   "Stormsinger (Shouts/Illusion/Electro Destro)",
-  "The Bard (Speech/Alteration Sounds/Illusion/1H)",
+  "The Bard (Speech/Alteration Sounds/Illusion/1H/Trait 'Acoustic Arcanist'/Trait 'Fatal Attraction')",
   "The Hooked One (Argonian/1H/Enchanting/LA/trait 'Angler'/Trait 'Swimmer')",
   "The Profaned Monk of Sheogorath (Unarmored/Blight Fists/Entropy/Sheogorath deity)",
   "Thornscale Saint of Arkay (Argonian/Alteration Transmutation/Restoration Heal/Heavy Armor/Deity Arkay)",
@@ -334,24 +338,25 @@
       }
     }
 
-    function wrapText(text, maxWidth, fontSize) {
-      const words = text.split(' ');
-      const lines = [];
-      let line = '';
-      for (let n = 0; n < words.length; n++) {
-        const testLine = line + words[n] + ' ';
-        const metrics = ctx.measureText(testLine);
-        const testWidth = metrics.width;
-        if (testWidth > maxWidth && n > 0) {
-          lines.push(line.trim());
-          line = words[n] + ' ';
-        } else {
-          line = testLine;
-        }
-      }
+  function wrapText(text, maxWidth, fontSize) {
+  // Rozdziel po spacji i po ukośniku
+  const words = text.split(/([ /])/); // zachowuje spacje i ukośniki jako osobne elementy
+  const lines = [];
+  let line = '';
+  for (let n = 0; n < words.length; n++) {
+    const testLine = line + words[n];
+    const metrics = ctx.measureText(testLine);
+    const testWidth = metrics.width;
+    if (testWidth > maxWidth && n > 0 && words[n] !== ' ' && words[n] !== '/') {
       lines.push(line.trim());
-      return lines;
+      line = words[n];
+    } else {
+      line = testLine;
     }
+  }
+  lines.push(line.trim());
+  return lines;
+}
 
     function drawWheel() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -366,7 +371,9 @@
         ctx.beginPath();
         ctx.moveTo(centerX, centerY);
         const flicker = Math.floor(performance.now() / 250) % 2 === 0;
-        ctx.fillStyle = (i === highlightedIndex) ? (flicker ? "#fff200" : "#ffd900") : `hsl(${(i * 360) / numSegments}, 80%, 60%)`;
+        ctx.fillStyle = (i === highlightedIndex)
+  ? (flicker ? "#fff200" : "#ffd900")
+  : `hsl(0, 60%, ${50 + (i % 2) * 10}%)`; // stonowany czerwony
         ctx.arc(centerX, centerY, radius, angle + i * angleStep, angle + (i + 1) * angleStep);
         ctx.fill();
 
@@ -375,17 +382,29 @@
         ctx.rotate(angle + (i + 0.5) * angleStep);
 
         ctx.fillStyle = "#000";
-        const fontSize = Math.min(18, Math.max(10, 360 / numSegments));
-        ctx.font = `${fontSize}px Arial`;
+let fontSize;
+if (window.innerWidth <= 768) {
+  fontSize = Math.min(26, Math.max(14, 360 / numSegments)); // mobile: jeszcze większy tekst
+} else {
+  fontSize = Math.min(24, Math.max(12, 360 / numSegments)); // PC: duży tekst
+}
+ctx.font = `${fontSize}px Arial`;
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
 
-        const lines = wrapText(segments[i], radius * 0.6, fontSize);
-        const lineHeight = fontSize + 2;
-        const startY = -((lines.length - 1) * lineHeight) / 2;
+         // WYŚWIETL TYLKO NAZWĘ KLASY (przed pierwszym nawiasem)
+  let className = segments[i];
+  const match = className.match(/^([^(]+)\s*(\(.*\))?/);
+  if (match) className = match[1].trim();
+
+
+        // Popraw TUTAJ: przekazuj className do wrapText!
+const lines = wrapText(className, radius * 0.55, fontSize); // było 0.6
+const lineHeight = fontSize + 2;
+const startY = -((lines.length - 1) * lineHeight) / 2;
 
         for (let j = 0; j < lines.length; j++) {
-          ctx.fillText(lines[j], radius * 0.65, startY + j * lineHeight);
+          ctx.fillText(lines[j], radius * 0.75, startY + j * lineHeight);
         }
 
         ctx.restore();
