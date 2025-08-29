@@ -2,18 +2,31 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <style>
-    body {
-      margin: 0;
-      background: transparent;
-      font-size: 150px;
-      font-family: Ghastly Panic;
-      color: Red;
-    }
-     /* Mobile */
+<style>
+    #counter {
+  font-size: 68px;               /* mniejszy na mobile */
+  font-family: "Ghastly Panic", cursive;
+  color: red;
+  line-height: 1;                /* żadnych dodatkowych odstępów */
+  display: inline-block;         /* wysokość = wysokość tekstu */
+  margin: 0;
+  padding: 0;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;                  /* żeby nie rozciągało body */
+}
+
+
     @media (max-width: 768px) {
-      body {
-        font-size: 40px; /* mniejszy tekst na telefonie */
+      #counter {
+        font-size: 48px;     /* mniejszy na mobile */
       }
     }
   </style>
