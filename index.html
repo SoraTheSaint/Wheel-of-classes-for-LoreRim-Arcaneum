@@ -395,14 +395,26 @@
       const angleStep = (2 * Math.PI) / numSegments;
 
       for (let i = 0; i < numSegments; i++) {
-        ctx.beginPath();
-        ctx.moveTo(centerX, centerY);
-        const flicker = Math.floor(performance.now() / 250) % 2 === 0;
-        ctx.fillStyle = (i === highlightedIndex)
-  ? (flicker ? "#fff200" : "#ffd900")
-  : `hsl(0, 60%, ${50 + (i % 2) * 10}%)`; // stonowany czerwony
-        ctx.arc(centerX, centerY, radius, angle + i * angleStep, angle + (i + 1) * angleStep);
-        ctx.fill();
+  ctx.beginPath();
+  ctx.moveTo(centerX, centerY);
+  const flicker = Math.floor(performance.now() / 250) % 2 === 0;
+
+  // 🔹 trzy odcienie czerwieni: krwisty, mocny i jasny
+  const shade = i % 3 === 0 ? 35     // ciemnoczerwony (krwisty)
+              : i % 3 === 1 ? 45     // średni czerwony
+              : 55;                  // jaśniejszy, stonowany czerwony
+
+  ctx.fillStyle = (i === highlightedIndex)
+    ? (flicker ? "#fff200" : "#ffd900")   // efekt migania wygranego segmentu
+    : `hsl(0, 80%, ${shade}%)`;           // różne odcienie czerwieni
+
+  ctx.arc(centerX, centerY, radius, angle + i * angleStep, angle + (i + 1) * angleStep);
+  ctx.fill();
+
+  // 🔹 ciemna linia między segmentami
+  ctx.strokeStyle = "rgba(0, 0, 0, 0.8)";
+  ctx.lineWidth = 2;
+  ctx.stroke();
 
         ctx.save();
         ctx.translate(centerX, centerY);
