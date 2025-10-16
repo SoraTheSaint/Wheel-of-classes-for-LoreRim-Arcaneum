@@ -23,10 +23,9 @@
   color: white;
   font-size: 24px;
 }
-
 #pointer {
   position: absolute;
-  top: 5px; /* nad kołem */
+  top: calc(50% - 40vh); /* dopasowanie pionowe względem koła */
   left: 50%;
   transform: translateX(-50%);
   width: 0;
@@ -53,13 +52,12 @@
 }
 
 
-/* kontener koła */
 .wheel-container {
-  position: relative;
-  margin-top: -40px;
+  position: relative; /* Upewnij się, że to jest ustawione */
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 20px;
 }
 
     canvas {
