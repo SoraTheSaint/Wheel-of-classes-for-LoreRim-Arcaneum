@@ -83,6 +83,9 @@
 }
     #spinButton { background-color: #28a745; }
     #resetButton { background-color: #dc3545; }
+    #shuffleButton { background-color: #6f42c1;}
+    #shuffleButton:hover { background-color: #8e5ef7;}
+
 
     .counter-frame{
     width: 175px;
@@ -210,7 +213,7 @@
 <div class="top-bar">
   <button id="spinButton" class="button">Choose destiny</button>
   <button id="resetButton" class="button">Reset</button>
-  <button id="shuffleButton" class="button" style="background-color:#007bff;">Shuffle</button>
+  <button id="shuffleButton" class="button">Shuffle</button>
   <iframe src="counter.html" class="counter-frame" scrolling="no" style="overflow:hidden;"></iframe>
   <iframe src="result.html" class="result-frame"></iframe>
 </div>
@@ -226,6 +229,8 @@
 
   <audio id="soundSelect" src="area.mp3" preload="auto"></audio>
   <audio id="soundEnd" src="you-died.mp3" preload="auto"></audio>
+  <audio id="soundShuffle" src="soul-gather.mp3" preload="auto"></audio>
+
 
   <script>
     const canvas = document.getElementById('wheelCanvas');
@@ -585,7 +590,7 @@ const startY = -((lines.length - 1) * lineHeight) / 2;
 
     resetButton.addEventListener('click', resetAll);
 
-    // Fisher–Yates shuffle — tasowanie tablicy
+// Fisher–Yates shuffle — tasowanie tablicy
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -593,7 +598,10 @@ function shuffleArray(array) {
   }
 }
 
-// Przycisk shuffle
+// Obsługa przycisku Shuffle
+const soundShuffle = document.getElementById('soundShuffle');
+soundShuffle.volume = 0.25; // 🔉 połowa głośności
+
 document.getElementById('shuffleButton').addEventListener('click', () => {
   if (spinning) return; // nie tasuj w trakcie kręcenia
 
@@ -603,8 +611,17 @@ document.getElementById('shuffleButton').addEventListener('click', () => {
   drawWheel();
   saveState();
 
-  
+  // 🔊 odtworzenie dźwięku
+  soundShuffle.currentTime = 0;
+  soundShuffle.play();
+
+  // ✨ subtelne mignięcie koła
+  canvas.style.transition = 'opacity 0.25s';
+  canvas.style.opacity = '0.5';
+  setTimeout(() => { canvas.style.opacity = '1'; }, 250);
 });
+
+
 
 
     drawWheel();
