@@ -81,11 +81,46 @@
   cursor: pointer;
   color: white;
 }
-    #spinButton { background-color: #28a745; }
-    #resetButton { background-color: #dc3545; }
+    #spinButton { background-color: #28a745;}
+    #spinButton:hover { background-color: #45c261;}
+    #resetButton { background-color: #dc3545;}
+    #resetButton:hover { background-color: #e91e63;}
     #shuffleButton { background-color: #6f42c1;}
     #shuffleButton:hover { background-color: #8e5ef7;}
+    #compendiumButton { background-color: #b1a32c;}
+    #compendiumButton:hover { background-color: #c8b53c;} 
 
+    
+/* delikatne podświetlenie i unoszenie */
+#spinButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.35);
+  opacity: 0.98;
+}
+
+#resetButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.28);
+  opacity: 0.98;
+}
+
+#shuffleButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.28);
+  opacity: 0.98;
+}
+
+#compendiumButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.28);
+  opacity: 0.98;
+}
+
+/* opcjonalnie :active (kliknięcie) */
+#spinButton:active, #resetButton:active, #shuffleButton:active, #compendiumButton:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
 
     .counter-frame{
     width: 175px;
@@ -134,6 +169,306 @@
       display: none;
       user-select: none;
     }
+
+    /* MODAL */
+    .modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.85);
+  z-index: 50;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Diablo', cursive;
+}
+
+.search-box {
+  width: 70%;
+  max-width: 350px;
+  padding: 8px 12px;
+  border: 2px solid #e91e63;
+  border-radius: 6px;
+  background: #111;
+  color: #f1f1f1;
+  font-size: 18px;
+  font-family: 'Diablo';
+  text-align: center;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.search-box:focus {
+  border-color: #ff4081;
+  background: #1a1a1a;
+}
+
+.clear-btn {
+  background: #222;
+  color: #e91e63;
+  border: 2px solid #e91e63;
+  border-radius: 6px;
+  font-size: 18px;
+  padding: 6px 16px;
+  font-family: 'Diablo';
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.clear-btn:hover {
+  background: #e91e63;
+  color: #111;
+}
+
+.search-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.modal-content {
+  background: #111;
+  border: 2px solid #e91e63;
+  border-radius: 12px;
+  padding: 20px;
+  color: #f1f1f1;
+  max-width: 700px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.modal-content h2 {
+  text-align: center;
+  color: #e91e63;
+  margin-bottom: 10px;
+  font-size: 40px;
+}
+
+.close {
+  position: absolute;
+  top: 10px; right: 20px;
+  font-size: 40px;
+  color: #e91e63;
+  cursor: pointer;
+}
+
+.category-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+/* kolory frakcji według nowych kluczy */
+.cat-btn {
+  font-family: 'Diablo', serif;
+  font-size: 18px;
+  border: 2px solid #c0392b;
+  color: #c0392b;
+  background: none;
+  padding: 8px 16px;
+  border-radius: 10px;
+  transition: background 180ms ease, color 180ms ease, transform 120ms ease, box-shadow 180ms ease;
+  cursor: pointer;
+}
+
+/* --------------------- KOLORY KATEGORII --------------------- */
+
+/* ARKANA – błękit magii */
+.cat-btn[data-cat*="ARCANE"] {
+  background: #0b3d91;
+  color: #ffecb3;
+  border-color: #4f7eea;
+}
+.cat-btn[data-cat*="ARCANE"].active {
+  background: none;
+  color: #0b3d91;
+  border-color: #ffecb3;
+  text-shadow: 0 0 8px #4f7eea;
+}
+
+/* WOJOWNICY – ognisty czerwono-pomarańczowy */
+.cat-btn[data-cat*="WARRIOR"], .cat-btn[data-cat*="LEGION"] {
+  background: #8b2f12;
+  color: #ffe6d6;
+  border-color: #ff6f3c;
+}
+.cat-btn[data-cat*="WARRIOR"].active, .cat-btn[data-cat*="LEGION"].active {
+  background: none;
+  color: #ff6f3c;
+  border-color: #ffe6d6;
+  text-shadow: 0 0 8px #ff6f3c;
+}
+
+/* HYBRID ASCENDANTS – stalowo-niebieski z nutą zieleni */
+.cat-btn[data-cat*="HYBRID"], .cat-btn[data-cat*="ASCENDANT"] {
+  background: #1e3b3f;
+  color: #c9f0ff;
+  border-color: #4dc9ff;
+}
+.cat-btn[data-cat*="HYBRID"].active, .cat-btn[data-cat*="ASCENDANT"].active {
+  background: none;
+  color: #4dc9ff;
+  border-color: #c9f0ff;
+  text-shadow: 0 0 8px #4dc9ff;
+}
+
+/* SHADOW COVENS – mroczny fiolet */
+.cat-btn[data-cat*="SHADOW"], .cat-btn[data-cat*="COVEN"] {
+  background: #331a66;
+  color: #e9ddff;
+  border-color: #8a6eff;
+}
+.cat-btn[data-cat*="SHADOW"].active, .cat-btn[data-cat*="COVEN"].active {
+  background: none;
+  color: #8a6eff;
+  border-color: #e9ddff;
+  text-shadow: 0 0 8px #8a6eff;
+}
+
+/* DIVINE CALLINGS – złoto-święty */
+.cat-btn[data-cat*="DIVINE"], .cat-btn[data-cat*="CALLING"] {
+  background: #5a561a;
+  color: #fff7c2;
+  border-color: #f1e16b;
+}
+.cat-btn[data-cat*="DIVINE"].active, .cat-btn[data-cat*="CALLING"].active {
+  background: none;
+  color: #f1e16b;
+  border-color: #fff7c2;
+  text-shadow: 0 0 8px #f1e16b;
+}
+
+/* CURSED ONES – blight/brązowy zgnilizny */
+.cat-btn[data-cat*="CURSED"], .cat-btn[data-cat*="BLIGHTED"], .cat-btn[data-cat*="CURSE"] {
+  background: #3b1f0f;
+  color: #ffd7c9;
+  border-color: #b7410e;
+}
+.cat-btn[data-cat*="CURSED"].active, .cat-btn[data-cat*="BLIGHTED"].active, .cat-btn[data-cat*="CURSE"].active {
+  background: none;
+  color: #b7410e;
+  border-color: #ffd7c9;
+  text-shadow: 0 0 8px #b7410e;
+}
+
+/* MORTAL OUTCASTS – stalowy, szarawy */
+.cat-btn[data-cat*="MORTAL"], .cat-btn[data-cat*="OUTCAST"] {
+  background: #2b2b2b;
+  color: #e0e0e0;
+  border-color: #888;
+}
+.cat-btn[data-cat*="MORTAL"].active, .cat-btn[data-cat*="OUTCAST"].active {
+  background: none;
+  color: #bbb;
+  border-color: #e0e0e0;
+  text-shadow: 0 0 8px #bbb;
+}
+
+
+/* wygląd po hover */
+.cat-btn:hover {
+  color: #fff;
+  background: rgba(192, 57, 43, 0.15);
+  border-color: #fff;
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+/* aktywny odwrotny kolor */
+.cat-btn.active {
+  color: #fff;
+  border-color: #fff;
+  background: none;
+  text-shadow: 0 0 8px #ff3b3b;
+}
+
+/* Odwrócenie kolorów według frakcji */
+.cat-btn[data-cat*="ARCANE"].active-cat {
+  background: #ffecb3;
+  color: #0b3d91;
+  border-color: #4f7eea;
+}
+.cat-btn[data-cat*="WARRIOR"].active-cat,
+.cat-btn[data-cat*="FORGED"].active-cat,
+.cat-btn[data-cat*="LEGION"].active-cat {
+  background: #ffe6d6;
+  color: #8b2f12;
+  border-color: #ff6f3c;
+}
+.cat-btn[data-cat*="SHADOW"].active-cat,
+.cat-btn[data-cat*="COVEN"].active-cat {
+  background: #e9ddff;
+  color: #331a66;
+  border-color: #8a6eff;
+}
+.cat-btn[data-cat*="DIVINE"].active-cat,
+.cat-btn[data-cat*="CALLING"].active-cat {
+  background: #fff7c2;
+  color: #5a561a;
+  border-color: #f1e16b;
+}
+.cat-btn[data-cat*="CURSED"].active-cat,
+.cat-btn[data-cat*="BLIGHTED"].active-cat,
+.cat-btn[data-cat*="CURSE"].active-cat {
+  background: #ffd7c9;
+  color: #3b1f0f;
+  border-color: #b7410e;
+}
+
+/* małe dopasowania modal / responsywne */
+.category-buttons { gap: 8px; }
+.cat-btn:hover {
+  background: #e91e63;
+  color: #111;
+}
+
+.class-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.class-entry {
+  background-color: rgba(20, 20, 20, 0.8);
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  border-left: 4px solid #e4c17d;
+  border-radius: 10px;
+}
+
+.class-entry h3 {
+  font-family: 'Diablo', serif;
+  color: #e4c17d;
+  letter-spacing: 1px;
+}
+
+.class-entry p {
+  font-family: 'Cinzel', serif;
+  color: #ccc;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+#classList {
+  margin-top: 15px;
+  color: #e9e6d7;
+}
+
+#classList h2 {
+  font-family: 'Diablo';
+  font-size: 28px;
+  color: #ffcc66;
+  text-align: center;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
 
     /* --- MOBILE --- */
 @media (max-width: 768px) {
@@ -241,6 +576,31 @@
 <div class="top-bar">
   <button id="spinButton" class="button">Choose destiny</button>
   <button id="resetButton" class="button">Reset</button>
+  <button id="compendiumButton" class="button">Compendium</button>
+
+<div id="compendiumModal" class="modal">
+  <div class="modal-content">
+    <span id="closeCompendium" class="close">&times;</span>
+    <h2>Class Compendium</h2>
+    
+    <div class="search-row">
+      <input type="text" id="classSearch" placeholder="Search class..." class="search-box">
+      <button id="clearSearch" class="clear-btn">Clear</button>
+    </div>
+<div id="categoryButtons">
+  <button class="cat-btn" data-cat="ARCANE ORDERS">Arcane Orders</button>
+  <button class="cat-btn" data-cat="WARRIOR LEGIONS">Warrior Legions</button>
+  <button class="cat-btn" data-cat="HYBRID ASCENDANTS">Hybrid Ascendants</button>
+  <button class="cat-btn" data-cat="SHADOW COVENS">Shadow Covens</button>
+  <button class="cat-btn" data-cat="DIVINE CALLINGS">Divine Callings</button>
+  <button class="cat-btn" data-cat="CURSED ONES">Cursed Ones</button>
+  <button class="cat-btn" data-cat="MORTAL OUTCASTS">Mortal Outcasts</button>
+</div>
+
+<div id="classList" class="class-list"></div>
+  </div>
+</div>
+
   <button id="shuffleButton" class="button">Shuffle</button>
   <iframe src="counter.html" class="counter-frame" scrolling="no" style="overflow:hidden;"></iframe>
   <iframe src="result.html" class="result-frame"></iframe>
@@ -329,7 +689,7 @@
       "Nightblade (Light Armor/Sneak/Illusion)",
       "Oathbound Defender (1H/Block/Restoration/Speech/Heavy Armor)",
       "Occultist (Robes/Entropy/Conjuration/Scrolls)",
-      "Paladin Meridia (1h/Sun Resto/Heavy Armor/Trait 'Sunkissed'/Deity Meridia)",
+      "Paladin of Meridia (1h/Sun Resto/Heavy Armor/Trait 'Sunkissed'/Deity Meridia)",
       "Phantom Ranger (Sneak/Bound Bow/Light Armor)",
       "Plague Knight (Heavy Armor/Mace/Restoration Poison/Trait 'Balanced Casting')",
       "Plague Prophet (Unarmored/Staff or Mace/Restoration Poison/Entropy)",
@@ -654,6 +1014,875 @@ document.getElementById('shuffleButton').addEventListener('click', () => {
 
     drawWheel();
     animate();
+
+   const compendium = {
+
+  /* ------------------------- ARCANE ORDERS ------------------------- */
+  "ARCANE ORDERS": [
+    {
+      name: "Archmage",
+      desc: `<strong>(All Schools / Robes / Deity Magnus/Trait 'Self-taught')</strong><br>
+      The ultimate scholar, master of every discipline of magic. Their words can heal, destroy, and reshape the world.<br>
+      <em>Gameplay:</em> Late-game powerhouse excelling in adaptability.<br>
+      <q>Magnus lit the stars; I merely follow their script.</q>`
+    },
+    {
+      name: "Aethermage",
+      desc: `<strong>(Lightning Magic / Heavy Armor/trait 'Focused Magic')</strong><br>
+      Forged in the heart of storm and metal, the Aethermage channels volatile magicka through conduits of steel.<br>
+      <em>Gameplay:</em> Durable battle caster excelling in lightning destruction and shock resistance.<br>
+      <q>The storm is my scripture, and thunder my creed.</q>`
+    },
+    {
+      name: "Aether Dragoon",
+      desc: `<strong>(Heavy Armor / 2H Spear / Lightning Cloak)</strong><br>
+      Armored magi who spear the heavens themselves, channeling lightning through devastating aerial strikes.<br>
+      <em>Gameplay:</em> Mobile heavy fighter with lightning-boosted charge attacks.<br>
+      <q>To leap is to defy gods — to strike is to join them.</q>`
+    },
+    {
+      name: "Arcane Mage",
+      desc: `<strong>(Robes / Arcane Destruction)</strong><br>
+      A disciplined scholar of the weave, wielding precise arcane flames and subtle formulas.<br>
+      <em>Gameplay:</em> High-damage, mana-efficient destruction specialist.<br>
+      <q>Power is nothing without precision.</q>`
+    },
+    {
+      name: "Cindersaint",
+      desc: `<strong>(Robes / Fire Destruction / Restoration / Speech)</strong><br>
+      Flamebound prophets who preach redemption through holy combustion — each sermon ending in ash.<br>
+      <em>Gameplay:</em> Fire-restoration hybrid with burn-based healing and zealotry buffs.<br>
+      <q>The purest prayer burns brightest.</q>`
+    },
+    {
+      name: "Cryomancer",
+      desc: `<strong>(Robes / Frost Destruction)</strong><br>
+      Masters of stillness and preservation, commanding frost that slows flesh and spirit.<br>
+      <em>Gameplay:</em> Crowd control and attrition via frost spells and slowing effects.<br>
+      <q>Time itself freezes before me.</q>`
+    },
+    {
+      name: "Electromancer",
+      desc: `<strong>(Robes / Lightning Destruction)</strong><br>
+      Electric fury embodied — Electromancers weave bolts that leap between foes.<br>
+      <em>Gameplay:</em> Fast, aggressive mage emphasizing chain lightning damage.<br>
+      <q>Every heartbeat is thunder waiting to strike.</q>`
+    },
+    {
+      name: "Elementalist",
+      desc: `<strong>(Fire / Frost / Lightning Destruction)</strong><br>
+      Students of primal forces who balance chaos through control of the elements.<br>
+      <em>Gameplay:</em> Adaptive caster switching elements to exploit weaknesses.<br>
+      <q>Balance the storm, and the world bends with it.</q>`
+    },
+    {
+      name: "Frostwarden",
+      desc: `<strong>(Light Armor / Frost Destruction / Shield or Wards)</strong><br>
+      Guardians of glacial sanctums who weave frost and faith into barriers of ice and light.<br>
+      <em>Gameplay:</em> Defensive mage using frost magic and wards for protection and control.<br>
+      <q>Cold hardens what fear would shatter.</q>`
+    },
+    {
+      name: "Twilight Whisperer",
+      desc: `<strong>(Robes / Entropic Destruction)</strong><br>
+      Wielders of entropy who dissolve the boundary between life and death.<br>
+      <em>Gameplay:</em> Specializes in entropy and life-draining destruction.<br>
+      <q>All things fade... I simply hasten their truth.</q>`
+    },
+    {
+      name: "Runecaster",
+      desc: `<strong>(Robes / Destruction & Restoration Runes / Alchemy)</strong><br>
+      Scholars who inscribe magic into stone and flesh, merging destructive runes with healing wards.<br>
+      <em>Gameplay:</em> Area denial via runes and tactical support spells.<br>
+      <q>The world itself is my spellbook.</q>`
+    },
+    {
+      name: "Rune Witch",
+      desc: `<strong>(Robes / Illusion & Alteration Runes / Alchemy)</strong><br>
+      Mystics who craft runes to twist perception and buff allies.<br>
+      <em>Gameplay:</em> Manipulates enemies with runic illusions and buffs.<br>
+      <q>Every rune is a doorway to doubt.</q>`
+    },
+    {
+      name: "Stormsinger",
+      desc: `<strong>(Shouts / Illusion / Lightning Destruction)</strong><br>
+      Sky-voiced prophets who blend the Thu’um with tempest magic, turning storms into songs of ruin.<br>
+      <em>Gameplay:</em> Hybrid shouter-mage combining lightning spells with illusionary echoes.<br>
+      <q>Every thunderclap is my applause.</q>`
+    },
+    {
+      name: "Wizard",
+      desc: `<strong>(Enchanting / Destruction / Wands)</strong><br>
+      Masters of channeling pure magic through crafted foci and wands.<br>
+      <em>Gameplay:</em> Ranged burst damage with enchanted wands and energy control.<br>
+      <q>A single spark, properly focused, can outshine the sun.</q>`
+    },
+    {
+      name: "Warlock",
+      desc: `<strong>(Destruction / Conjuration / Illusion)</strong><br>
+      Covenant-tied spellcasters who bind daedra and corruptive power.<br>
+      <em>Gameplay:</em> Versatile hybrid controlling battlefield with summons and curses.<br>
+      <q>I trade my soul for dominion, again and again.</q>`
+    },
+    {
+      name: "Guru",
+      desc: `<strong>(Alteration Wind / Emotional Illusion)</strong><br>
+      Mystics who master air currents and emotions, bending both to their will.<br>
+      <em>Gameplay:</em> Crowd manipulation via knockback and morale control.<br>
+      <q>The wind obeys those who breathe with purpose.</q>`
+    },
+    {
+      name: "Geomancer",
+      desc: `<strong>(Alteration Earth / Light Armor)</strong><br>
+      Wielders of Nirn's bones who shape terrain and tremor to defend or crush.<br>
+      <em>Gameplay:</em> Defensive mage manipulating earth barriers and shockwaves.<br>
+      <q>The mountain does not move—it commands.</q>`
+    },
+    {
+      name: "Thalmor Firebrand",
+      desc: `<strong>(Light Armor / Fire Destruction)</strong><br>
+      Fanatical agents who wield holy flame as judgement.<br>
+      <em>Gameplay:</em> Mobile pyromancer emphasizing speed and precise strikes.<br>
+      <q>By fire, the weak are purified.</q>`
+    },
+    {
+      name: "Hematist",
+      desc: `<strong>(Robes / Blood Destruction)</strong><br>
+      Blood-focused adepts who channel vitae into power and sacrifice.<br>
+      <em>Gameplay:</em> Life-drain spells that trade health for potent effects.<br>
+      <q>Blood remembers what the mind forgets.</q>`
+    },
+    {
+      name: "Hexblade",
+      desc: `<strong>(Bound Sword / Conjuration / Fire Destruction)</strong><br>
+      A mystic warrior who fights through weaponized pacts and flame.<br>
+      <em>Gameplay:</em> Melee-magic hybrid with bound weapon buffs and fire damage.<br>
+      <q>My blade answers the bargain in blood.</q>`
+    },
+    {
+      name: "Occultist",
+      desc: `<strong>(Robes / Entropy / Conjuration / Scrolls)</strong><br>
+      Arcanists who harvest forbidden lore, using scrolls and entropy to unravel foes.<br>
+      <em>Gameplay:</em> Utility caster specializing in debuffs and summoned horrors.<br>
+      <q>Knowledge is a key; some doors do not need opening.</q>`
+    },
+    {
+      name: "Mesmer",
+      desc: `<strong>(Robes / Shadow Illusion / Rapier)</strong><br>
+      Illusionists who fight with glamour and a blade in hand.<br>
+      <em>Gameplay:</em> Control-heavy caster with melee deception techniques.<br>
+      <q>Look twice — you might still be wrong.</q>`
+    },
+    {
+      name: "Runespear",
+      desc: `<strong>(Light Armor / Enchanting / Alteration / 2H Spear)</strong><br>
+      A spear-wielder who channels runic power into thrusts and wards.<br>
+      <em>Gameplay:</em> Versatile fighter combining reach and runic effects.<br>
+      <q>A line of runes, a line of fate.</q>`
+    },
+    {
+      name: "Sith",
+      desc: `<strong>(1H Sword / Lightning Destruction / Alteration)</strong><br>
+      Lightning swordmasters who bend storm and void into precise strikes.<br>
+      <em>Gameplay:</em> Fast duelist mixing shock spells with swordplay.<br>
+      <q>Strike quick, strike true — let thunder finish the rest.</q>`
+    },
+    {
+      name: "Spellforged Knight",
+      desc: `<strong>(Heavy Armor / Enchanting Trait / 1H + Shield)</strong><br>
+      Armored guardians who bind enchantments to steel and shield.<br>
+      <em>Gameplay:</em> Tanky frontline with enchantment-powered auras.<br>
+      <q>Steel remembers what the smith taught it.</q>`
+    },
+    {
+      name: "Spellbreaker",
+      desc: `<strong>(Heavy Armor / Alteration / 1H + Shield)</strong><br>
+      Ward-bearing defenders who twist magic against those who cast it.<br>
+      <em>Gameplay:</em> Anti-magic tank with altered defenses and counters.<br>
+      <q>Let them scream; your ward will answer.</q>`
+    },
+    {
+      name: "Wyrdsinger",
+      desc: `<strong>(Light Armor / Staff / Illusion / Speech)</strong><br>
+      Bards of eldritch verse whose songs twist fate itself.<br>
+      <em>Gameplay:</em> Support illusionist whose music buffs allies and disrupts foes.<br>
+      <q>Every verse rewrites a heartbeat.</q>`
+    },
+    {
+      name: "Wyrmcaller",
+      desc: `<strong>(Shouts / Light Armor / Conjuration Spirit)</strong><br>
+      Callers of great wyrms and ancestral shouts, bolstering allies with primal cries.<br>
+      <em>Gameplay:</em> Shout-focused summoner controlling draconic spirits.<br>
+      <q>The mountain's roar is a voice I keep.</q>`
+    }
+  ],
+
+  /* ------------------------- WARRIOR LEGIONS ------------------------- */
+  "WARRIOR LEGIONS": [
+    {
+      name: "Battlemage",
+      desc: `<strong>(Heavy Armor / Touch Destruction / Quarterstaff)</strong><br>
+      An armored caster who channels elemental energy through close-range combat.<br>
+      <em>Gameplay:</em> Hybrid melee spellcaster excelling at burst engagements.<br>
+      <q>Magic is wasted from afar.</q>`
+    },
+    {
+      name: "Dragoon",
+      desc: `<strong>(Heavy Armor / 2H Spear / Horse Combat)</strong><br>
+      Elite mounted warriors who pierce armor and scale dragons alike.<br>
+      <em>Gameplay:</em> High-mobility heavy fighter specializing in mounted charges and leap attacks.<br>
+      <q>The sky itself yields to my spear.</q>`
+    },
+    {
+      name: "Flameforged Champion",
+      desc: `<strong>(Heavy Armor / Greatsword / Fire Cloak)</strong><br>
+      Knights born from the forge, living infernos of divine wrath.<br>
+      <em>Gameplay:</em> Fire-enchanted melee powerhouse with aura damage.<br>
+      <q>Every swing, a prayer in flame.</q>`
+    },
+    {
+      name: "Death Knight",
+      desc: `<strong>(Heavy Armor / Greatsword / Conjuration Necro)</strong><br>
+      Fallen paladins who wield death as a weapon, commanding legions of the damned.<br>
+      <em>Gameplay:</em> Tanky necromancer mixing melee and undead summoning.<br>
+      <q>My oath remains — only my god has changed.</q>`
+    },
+    {
+      name: "General",
+      desc: `<strong>(Speech / 1H Sword / Heavy Armor / Block / Followers)</strong><br>
+      Commanders who lead from the front lines, their presence alone inspiring allies and breaking enemy resolve.<br>
+      <em>Gameplay:</em> Leadership-based warrior using follower buffs, tactical commands, and rally shouts.<br>
+      <q>Orders are only as strong as the courage behind them.</q>`
+    },
+    {
+      name: "Runeblade Templar",
+      desc: `<strong>(Heavy Armor / 1H Sword / Alteration Runes / Enchanting)</strong><br>
+      Holy smiths turned warriors, fortifying strikes with runes and warding magics.<br>
+      <em>Gameplay:</em> Balanced melee fighter with magical warding runes.<br>
+      <q>Each strike carries the weight of a blessing.</q>`
+    },
+    {
+      name: "Runebreaker",
+      desc: `<strong>(Heavy Armor / Warhammer / Runic Weapon Enchanting)</strong><br>
+      Wielders of rune-etched hammers designed to shatter wards and magic alike.<br>
+      <em>Gameplay:</em> Heavy bruiser specializing in breaking enchanted enemies.<br>
+      <q>Magic breaks as easily as bone.</q>`
+    },
+    {
+      name: "Dragon Slayer",
+      desc: `<strong>(Light Armor / Nodachi / Two-Handed)</strong><br>
+      Nomadic hunters dedicated to slaying scaled titans.<br>
+      <em>Gameplay:</em> High-risk melee specialist using mobility and precision.<br>
+      <q>Every dragon bleeds if struck true.</q>`
+    },
+    {
+      name: "Voicebreaker",
+      desc: `<strong>(Heavy Armor / Warhammer / Shouts)</strong><br>
+      Warriors who weaponize the Thu'um alongside raw strength.<br>
+      <em>Gameplay:</em> Crowd-controlling powerhouse using shouts and blunt weapons.<br>
+      <q>My voice is the sound of ruin.</q>`
+    },
+    {
+      name: "Veteran of the Forge",
+      desc: `<strong>(Smithing / 1H Mace / Heavy Armor / Deity Zenithar)</strong><br>
+      Disciplined blacksmith-knights blessed by Zenithar’s industry.<br>
+      <em>Gameplay:</em> Focused on crafting and enchanted blunt combat.<br>
+      <q>Creation is the truest weapon.</q>`
+    },
+    {
+      name: "Swift Guardian",
+      desc: `<strong>(Light Armor / 1H Sword / Block)</strong><br>
+      Agile defenders who rely on reflexes rather than bulk.<br>
+      <em>Gameplay:</em> Reactive fighter using parries and counters.<br>
+      <q>Speed, not steel, saves lives.</q>`
+    },
+    {
+      name: "Dragonborn of the North",
+      desc: `<strong>(Heavy Armor / Shouts / Sword & Shield)</strong><br>
+      Traditional warriors descended from ancient heroes, masters of the Thu'um.<br>
+      <em>Gameplay:</em> Shout-focused melee combat mixing faith and might.<br>
+      <q>The Voice is my birthright, and my burden.</q>`
+    },
+    {
+      name: "Berserker",
+      desc: `<strong>(2H Axe / Unarmored / Trait 'Rage')</strong><br>
+      Furious warriors who embrace bloodlust to shake off pain and break foes.<br>
+      <em>Gameplay:</em> High-damage, short-duration rage mechanics and cleave attacks.<br>
+      <q>Rage makes the world small and my axe large.</q>`
+    },
+    {
+      name: "Boltwarden",
+      desc: `<strong>(Heavy Armor / Heavy Crossbow)</strong><br>
+      Armored marksmen who bring siege power to the field with heavy bolts.<br>
+      <em>Gameplay:</em> Long-range precision and armor-piercing shots from heavy crossbows.<br>
+      <q>A single well-placed bolt is worth a dozen blades.</q>`
+    },
+    {
+      name: "Companion of Jorrvaskr",
+      desc: `<strong>(Heavy Armor / 2H Axe / Werewolf)</strong><br>
+      Veteran killers bound to the wolf-hall—tough as iron and fierce in a pack.<br>
+      <em>Gameplay:</em> Hybrid fighter with lycanthropic transformations and brute strength.<br>
+      <q>We are the pack. We do not fall alone.</q>`
+    },
+    {
+      name: "Frostbound Titan",
+      desc: `<strong>(Heavy Armor / Warhammer / Cryo Cloak)</strong><br>
+      Colossal fighters who channel the cold through every strike.<br>
+      <em>Gameplay:</em> Slow but devastating blows that freeze and control the field.<br>
+      <q>Stone and frost answer my call.</q>`
+    },
+    {
+      name: "Graveblade",
+      desc: `<strong>(1H / Summon Undead / Unarmored / Lockpicking)</strong><br>
+      Corpse-haired scions who mix blade and necromantic tricks.<br>
+      <em>Gameplay:</em> Agile fighter summoning undead helpers while striking swift blows.<br>
+      <q>I keep one hand on the dead and one on the throat of the living.</q>`
+    }
+  ],
+
+  /* ------------------------- HYBRID ASCENDANTS ------------------------- */
+  "HYBRID ASCENDANTS": [
+    {
+      name: "Alchemist",
+      desc: `<strong>(Light Armor / Alchemy / Traps / Poisons)</strong><br>
+      Masters of mixtures who shape combat through potions, bombs and venoms.<br>
+      <em>Gameplay:</em> Tactical hybrid using consumables, traps and status effects.<br>
+      <q>Potion or poison — the difference is only intention.</q>`
+    },
+    {
+      name: "Ancient Runesmith",
+      desc: `<strong>(Heavy Armor / Dwemer Smithing / Enchanting / Runemaster)</strong><br>
+      Lost smiths who infuse metal with runes and steam-wrought automatons.<br>
+      <em>Gameplay:</em> Craft-and-fight hybrid with constructs and rune weapons.<br>
+      <q>Metal remembers the hands that bent it.</q>`
+    },
+    {
+      name: "Ashblade Dervish",
+      desc: `<strong>(Light Armor / Scimitar / Fire Destro)</strong><br>
+      Dancing duelists who blend flame and blade in flashing arcs.<br>
+      <em>Gameplay:</em> Mobile skirmisher with fire-touch combos and rapid strikes.<br>
+      <q>Spin, burn, and be gone.</q>`
+    },
+    {
+      name: "Ash Prophet",
+      desc: `<strong>(Unarmored / Staff / Fire Destro / Speech)</strong><br>
+      Charismatic pyromaniacs who preach through flame and fury.<br>
+      <em>Gameplay:</em> Spell-talker mixing fire sorcery with persuasion and buffs.<br>
+      <q>Ash is all that's left of false gods.</q>`
+    },
+    {
+      name: "Ashen Cleric",
+      desc: `<strong>(Heavy Armor / Fire Destro / Restoration)</strong><br>
+      Warpriests wreathed in holy coals, mending allies while burning foes.<br>
+      <em>Gameplay:</em> Hybrid healer-damage dealer with fire and restoration spells.<br>
+      <q>Heal with heat, harm with hope.</q>`
+    },
+    {
+      name: "Aurafist",
+      desc: `<strong>(Unarmed / Restoration / Alteration)</strong><br>
+      Monastic fighters who channel protective auras through bare hands.<br>
+      <em>Gameplay:</em> Unarmed brawler with supportive buffs and defensive magic.<br>
+      <q>My palm is the first altar.</q>`
+    },
+    {
+      name: "Brewmaster",
+      desc: `<strong>(Staff / Alchemy / Trait 'Addict')</strong><br>
+      Combat brewers who use concoctions and staves to stagger and strengthen.<br>
+      <em>Gameplay:</em> Support-control hybrid using potions and staff combos.<br>
+      <q>A good brew straightens crooked fate.</q>`
+    },
+    {
+      name: "Druid",
+      desc: `<strong>(Alteration Transform / LA / Conjuration Spirit / Trait 'Druid')</strong><br>
+      Shapeshifters who bind nature's spirits and morph with the wild.<br>
+      <em>Gameplay:</em> Transform-focused hybrid with summons and nature magic.<br>
+      <q>The forest breathes through me.</q>`
+    },
+    {
+      name: "Dragon Monk",
+      desc: `<strong>(Unarmed / Unarmored / Shouts / Alteration)</strong><br>
+      Ascetic warriors who channel draconic shouts into barehanded techniques.<br>
+      <em>Gameplay:</em> Agile unarmed fighter combining shouts and altered movement.<br>
+      <q>Strike like a dragon, move like the wind.</q>`
+    },
+    {
+      name: "Primal Forsworn",
+      desc: `<strong>(Dual Axes / Alteration / Spirit Conjuration / Forsworn Armor)</strong><br>
+      Savage warriors who bind ancestral spirits and battlefield fury.<br>
+      <em>Gameplay:</em> Dual-wield berserker with spirit support and tribal magic.<br>
+      <q>Our axes remember the old dances.</q>`
+    },
+    {
+      name: "Sanguine Warlord",
+      desc: `<strong>(2H Sword / Heavy Armor / Blood Cloak)</strong><br>
+      Cursed captains who feast on life to heighten their warcraft.<br>
+      <em>Gameplay:</em> Blood-leeching bruiser with self-sustain and bleed mechanics.<br>
+      <q>Drink deep, bleed deeper.</q>`
+    },
+    {
+      name: "Spiritcaller",
+      desc: `<strong>(Forsworn Armor / Staff / Spirit Conjuration / Alteration)</strong><br>
+      Shamans who summon ancestral spirits and bind nature to their will.<br>
+      <em>Gameplay:</em> Summoner hybrid focusing on spirits and battlefield control.<br>
+      <q>They follow when I call; they obey when I bind.</q>`
+    },
+    {
+      name: "Spiritstalker",
+      desc: `<strong>(Light Armor / Bow / Spirit Conjuration)</strong><br>
+      Hunters who bind spirits to arrow and shadow to their steps.<br>
+      <em>Gameplay:</em> Ranged summon-hunter combining bowplay and spirit aides.<br>
+      <q>My arrow flies with two hearts behind it.</q>`
+    },
+    {
+      name: "Totem Reaver",
+      desc: `<strong>(Light Armor / 1H Mace / Triumvirate Totems / Alteration)</strong><br>
+      Tribal enforcers who plant totems that change the battlefield.<br>
+      <em>Gameplay:</em> Utility fighter who places totems for offense and defense.<br>
+      <q>Step where the totem points; survive where it commands.</q>`
+    },
+    {
+      name: "Witcher",
+      desc: `<strong>(2H / Light Armor / Alchemy)</strong><br>
+      Monster-hunters trained to exploit weaknesses with potions and signs.<br>
+      <em>Gameplay:</em> Specialist fighter with potions, oils and combat signs.<br>
+      <q>I hunt what hunts others.</q>`
+    },
+    {
+      name: "Blight Surgeon",
+      desc: `<strong>(Light Armor / Crossbow / Alchemy / Restoration Poison)</strong><br>
+      Field medics turned plague-smiths who weaponize disease to mend and maim.<br>
+      <em>Gameplay:</em> Versatile hybrid applying toxins while patching allies.<br>
+      <q>A healing hand can carry a contagion; both can save a cause.</q>`
+    }
+  ],
+
+  /* ------------------------- SHADOW COVENS ------------------------- */
+  "SHADOW COVENS": [
+    {
+      name: "Assassin",
+      desc: `<strong>(Stealth / Daggers / Poisons)</strong><br>
+      Silent killers trained in alchemy and deceit; masters of quick, invisible death.<br>
+      <em>Gameplay:</em> High-burst stealth damage with lethal finishers and poisons.<br>
+      <q>Death is a whisper, not a scream.</q>`
+    },
+    {
+      name: "Guttersnipe",
+      desc: `<strong>(Unarmed / Finesse / Sneak / Traits 'Lurker' & 'Nosferatu')</strong><br>
+      A feral street predator, feeding on blood and shadows alike.<br>
+      <em>Gameplay:</em> Vampire-style brawler relying on agility and stealth feeding.<br>
+      <q>I was born in the gutter. Now I drink from veins instead.</q>`
+    },
+    {
+      name: "The Bard",
+      desc: `<strong>(Speech / Alteration Sounds / Illusion – Emotional)</strong><br>
+      Performers who bend emotion and magic into melody and manipulation.<br>
+      <em>Gameplay:</em> Support/debuff specialist using sound to control fights.<br>
+      <q>Every song is a spell — every listener, a victim.</q>`
+    },
+    {
+      name: "The Hooked One",
+      desc: `<strong>(Argonian / 1H / Enchanting / Light Armor / Trait 'Angler')</strong><br>
+      Cursed Argonian sailor bound forever to tides and whispers of the deep.<br>
+      <em>Gameplay:</em> Hybrid enchanter with aquatic mobility and hooked weapons.<br>
+      <q>The sea takes, but it remembers.</q>`
+    },
+    {
+      name: "Nightblade",
+      desc: `<strong>(Light Armor / Sneak / Illusion)</strong><br>
+      Spell-thieves blending magic and stealth for misdirection and death.<br>
+      <em>Gameplay:</em> Infiltrator using invisibility and silent strikes to remove targets.<br>
+      <q>Shadow is merely light that remembers.</q>`
+    },
+    {
+      name: "Veilblade",
+      desc: `<strong>(Light Armor / Bound Dagger / Arcane Destruction / Perceptual Illusion)</strong><br>
+      Mystics who strike unseen, weaving blades and mind tricks in unison.<br>
+      <em>Gameplay:</em> Precision assassin combining illusion and bound weapons.<br>
+      <q>You never saw me. You only imagined the pain.</q>`
+    },
+    {
+      name: "Shadowdancer",
+      desc: `<strong>(Light Armor / Illusion – Shadow & Perceptual / Daggers)</strong><br>
+      Performers turned predators, blending motion and deception.<br>
+      <em>Gameplay:</em> Illusion-based rogue using evasion and mirror tactics.<br>
+      <q>Grace hides the blade.</q>`
+    },
+    {
+      name: "Iron Rose/Duelist",
+      desc: `<strong>(Light Armor / Rapier / Fencing)</strong><br>
+      Noble duelists who live by wit and reflex alone.<br>
+      <em>Gameplay:</em> Parry-heavy fighter relying on agility and timing.<br>
+      <q>Every cut is art, every death an applause.</q>`
+    },
+    {
+      name: "Silver Ranger",
+      desc: `<strong>(Light Armor / Bow / Restoration)</strong><br>
+      Hunters of darkness empowered by silver and light.<br>
+      <em>Gameplay:</em> Ranged combatant effective against undead with healing backups.<br>
+      <q>Light guides the arrow.</q>`
+    },
+    {
+      name: "Gambler",
+      desc: `<strong>(Light Armor / Dual Daggers)</strong><br>
+      Fighters who leave everything to chance — except victory.<br>
+      <em>Gameplay:</em> Risk-reward mechanics with random buffs and critical windows.<br>
+      <q>Fate loves a fool who bets big.</q>`
+    },
+    {
+      name: "Explorer",
+      desc: `<strong>(Light Armor / Whip or Club / Block / Torch)</strong><br>
+      Adventurers who thrive in ruin and shadow, always one map ahead.<br>
+      <em>Gameplay:</em> Versatile utility fighter with traps, mobility and survival tools.<br>
+      <q>The world hides its treasures behind fear.</q>`
+    },
+    {
+      name: "Sniper",
+      desc: `<strong>(Heavy Bow / Light Armor / Trait 'Disciplined')</strong><br>
+      Precision marksmen skilled in lone assassination from distance.<br>
+      <em>Gameplay:</em> High-damage ranged specialist with focus and positioning mechanics.<br>
+      <q>One breath, one sight, one life ended.</q>`
+    },
+    {
+      name: "Phantom Ranger",
+      desc: `<strong>(Sneak / Bound Bow / Light Armor)</strong><br>
+      Ethereal hunters who fire spectral arrows from concealment.<br>
+      <em>Gameplay:</em> Stealth archer with summoned bound projectiles.<br>
+      <q>The night remembers nothing of me.</q>`
+    },
+    {
+      name: "Taming Master",
+      desc: `<strong>(Light Armor / Wayfarer ‘Taming’ / 1H Spear)</strong><br>
+      Nomadic beastlords who forge sacred bonds with wild creatures and ride them into battle.<br>
+      <em>Gameplay:</em> Mounted combatant and summoner using beasts as living weapons.<br>
+      <q>Every beast is a brother — every battle, a hunt.</q>`
+    }
+  ],
+  /* ------------------------- DIVINE CALLINGS ------------------------- */
+  "DIVINE CALLINGS": [
+    {
+      name: "Paladin of Meridia",
+      desc: `<strong>(Heavy Armor / Sun Restoration)</strong><br>
+      Holy warrior devoted to Meridia’s cleansing light, purging undead and corruption.<br>
+      <em>Gameplay:</em> Anti-undead paladin wielding radiant healing and sunfire.<br>
+      <q>Darkness flees before devotion.</q>`
+    },
+    {
+      name: "Priestess of Dibella",
+      desc: `<strong>(Female / Illusion / Speech / Trait 'Au Naturel')</strong><br>
+      Priestesses who inspire through grace and persuasion rather than violence.<br>
+      <em>Gameplay:</em> Support illusionist who charms and distracts enemies.<br>
+      <q>Beauty itself is a weapon.</q>`
+    },
+    {
+      name: "Stendar Zealot",
+      desc: `<strong>(Unarmored / 2H / Block / Deity Stendar)</strong><br>
+      Fanatical followers of Stendar who cast aside armor to prove their faith in raw conviction.<br>
+      <em>Gameplay:</em> Bare-chested warrior-priest blending parries and divine strikes.<br>
+      <q>Mercy through strength, judgment through faith.</q>`
+    },
+    {
+      name: "Temple Drunkard",
+      desc: `<strong>(Heavy Armor / Greatsword / Alchemy / Trait 'Addict')</strong><br>
+      Once a holy warrior, now a fallen zealot whose faith is fermented in mead and regret.<br>
+      <em>Gameplay:</em> Unpredictable brawler using potions both as fuel and crutch.<br>
+      <q>Divinity tastes better from a bottle.</q>`
+    },
+    {
+      name: "Thornscale Saint of Arkay",
+      desc: `<strong>(Argonian / Alteration Transmutation / Restoration Heal / Heavy Armor)</strong><br>
+      Zealous Argonian clerics preserving life's cycle through ritual and might.<br>
+      <em>Gameplay:</em> Durable healer who balances life and death magic.<br>
+      <q>Even decay serves the balance.</q>`
+    },
+    {
+      name: "Oathbound Defender",
+      desc: `<strong>(Heavy Armor / Sword & Shield / Restoration)</strong><br>
+      Sworn protectors who embody faith through endurance and shield-wall tactics.<br>
+      <em>Gameplay:</em> Defensive paladin using buffs and crowd control.<br>
+      <q>My shield is my prayer.</q>`
+    },
+    {
+      name: "Vigilant Exorcist",
+      desc: `<strong>(Light Armor / Mace / Restoration Turn Undead & Wards)</strong><br>
+      Members of the Vigil trained to purge daedra and spirits.<br>
+      <em>Gameplay:</em> Utility exorcist balancing wards and anti-daedric spells.<br>
+      <q>Fear not, for mercy burns brighter than sin.</q>`
+    },
+    {
+      name: "Priestess of Mara",
+      desc: `<strong>(Robes / Restoration Healing & Wards / Speech)</strong><br>
+      Peaceful healer spreading Mara's love through mercy and magic.<br>
+      <em>Gameplay:</em> Healing and protection support class.<br>
+      <q>To love is to heal, even the cruel.</q>`
+    },
+    {
+      name: "Dawnguard Sentinel",
+      desc: `<strong>(Restoration / Archery)</strong><br>
+      Sentinels sworn to stand against vampiric and daedric threats with sun-kissed skills.<br>
+      <em>Gameplay:</em> Support-archetype blending archery with restorative magics.<br>
+      <q>The dawn is our blade.</q>`
+    },
+    {
+      name: "Greybeard",
+      desc: `<strong>(Unarmored / Speech / Alteration)</strong><br>
+      Masters of the Thu'um who train in stillness and voice.<br>
+      <em>Gameplay:</em> Shout-centered caster using voice to alter battle tempo.<br>
+      <q>Silence carries the loudest lesson.</q>`
+    },
+    {
+      name: "Dreamwalker",
+      desc: `<strong>(Illusion / Alteration / Speech)</strong><br>
+      Mystical seers who walk the edges of dreams to bend reality.<br>
+      <em>Gameplay:</em> Illusion-support hybrid manipulating perception and morale.<br>
+      <q>What you dream often wakes as truth.</q>`
+    }
+  ],
+
+  /* ------------------------- CURSED ONES ------------------------- */
+  "CURSED ONES": [
+    {
+      name: "Gravewarden",
+      desc: `<strong>(Heavy Armor / Warhammer / Restoration / Conjuration Spirits)</strong><br>
+      Gravewardens guard the boundary between living and dead, bearing consecrated hammers and bound spirits.<br>
+      <em>Gameplay:</em> Resilient battle-cleric using spirit summons and heavy blunt weapons.<br>
+      <q>Where others fear ghosts, I walk beside them.</q>`
+    },
+    {
+      name: "Harbinger of Oblivion",
+      desc: `<strong>(Conjuration / Destruction / Daedric-only Equipment)</strong><br>
+      Daedra-touched sorcerers who channel power from Oblivion itself.<br>
+      <em>Gameplay:</em> High-risk caster wielding unstable daedric conjurations.<br>
+      <q>I burn with the fire of a thousand realms.</q>`
+    },
+    {
+      name: "Necromancer",
+      desc: `<strong>(Conjuration Necro)</strong><br>
+      Masters of undeath who see mortality as the next stage of study.<br>
+      <em>Gameplay:</em> Summoner specializing in undead minions and corpse manipulation.<br>
+      <q>The grave is but another classroom.</q>`
+    },
+    {
+      name: "Gravelord",
+      desc: `<strong>(Light Armor / Greatsword / Necro / Alteration)</strong><br>
+      Warlords of bone commanding legions from the shadows.<br>
+      <em>Gameplay:</em> Melee necromancer mixing reanimation with brawling.<br>
+      <q>Rise, my legion, and remember my name.</q>`
+    },
+    {
+      name: "Crimson Reaver",
+      desc: `<strong>(Light Armor / 1H Axe / Blood Magic / Vampirism)</strong><br>
+      Cursed warriors who drink both blood and magic to sustain their wrath.<br>
+      <em>Gameplay:</em> Life-stealing melee fighter with vampiric synergy.<br>
+      <q>My hunger is my strength.</q>`
+    },
+    {
+      name: "The Profaned Monk of Sheogorath",
+      desc: `<strong>(Unarmored / Entropy / Blight Fists)</strong><br>
+      Mad monks devoted to Sheogorath, spreading madness through combat.<br>
+      <em>Gameplay:</em> Unpredictable brawler with entropy-infused attacks.<br>
+      <q>Sanity is the weakest armor.</q>`
+    },
+    {
+      name: "Black Crusader",
+      desc: `<strong>(Heavy Armor / Entropy / Restoration Poison)</strong><br>
+      Corrupted holy knights spreading decay and false salvation.<br>
+      <em>Gameplay:</em> Paladin archetype inverted through blight and entropy.<br>
+      <q>I bring salvation through suffering.</q>`
+    },
+    {
+      name: "Blightborn",
+      desc: `<strong>(Robes / Alchemy / Restoration Poison)</strong><br>
+      Plague channelers who weaponize disease as a form of power.<br>
+      <em>Gameplay:</em> Poison-based caster sustaining through contagion.<br>
+      <q>Blessed be the rot that cleanses.</q>`
+    },
+    {
+      name: "Plague Knight",
+      desc: `<strong>(Heavy Armor / Mace / Restoration Poison)</strong><br>
+      Armored zealots wielding sanctified toxins and blighted sanctity.<br>
+      <em>Gameplay:</em> Frontline fighter inflicting poison while healing allies.<br>
+      <q>The cure and the curse share a chalice.</q>`
+    },
+    {
+      name: "Plague Prophet",
+      desc: `<strong>(Unarmored / Staff / Restoration Poison / Entropy)</strong><br>
+      Fanatics preaching redemption through corruption and decay.<br>
+      <em>Gameplay:</em> Support caster spreading damage-over-time and debuffs.<br>
+      <q>Only through decay can purity return.</q>`
+    },
+    {
+      name: "Blight Surgeon",
+      desc: `<strong>(Light Armor / Crossbow / Alchemy / Restoration Poison)</strong><br>
+      Field medics turned plague-smiths who weaponize disease to both heal and harm.<br>
+      <em>Gameplay:</em> Tactical hybrid applying toxins and medical tricks.<br>
+      <q>To fix flesh, first understand rot.</q>`
+    },
+    {
+      name: "Sanguine Warlord",
+      desc: `<strong>(2H Sword / Heavy Armor / Blood Cloak)</strong><br>
+      Blood-warriors who use vampiric rituals to fortify their battlefield presence.<br>
+      <em>Gameplay:</em> Sustained melee bruiser who steals and returns vitality.<br>
+      <q>Blood commands the living as it did the dead.</q>`
+    }
+  ],
+
+  /* ------------------------- MORTAL OUTCASTS ------------------------- */
+  "MORTAL OUTCASTS": [
+    {
+      name: "Brawler",
+      desc: `<strong>(Unarmored / Unarmed / Dodge)</strong><br>
+      Streetfighters who rely on speed, grit and improvised techniques.<br>
+      <em>Gameplay:</em> Agile unarmed combatant with dodge and counterplay focus.<br>
+      <q>Never cower; never give them the shape of you.</q>`
+    },
+    {
+      name: "Hunter",
+      desc: `<strong>(Light Armor / Light Bow / Trait 'Fast Shot')</strong><br>
+      Survivalists who stalk prey and harvest the field for advantage.<br>
+      <em>Gameplay:</em> Ranged skirmisher with traps, tracking and rapid volley mechanics.<br>
+      <q>Aim for the heart; the rest is practice.</q>`
+    },
+    {
+      name: "Witch Hunter",
+      desc: `<strong>(Bound Xbow / Light Armor / Destro Entropy)</strong><br>
+      Specialized slayers who hunt down forbidden sorcery and corrupted cults.<br>
+      <em>Gameplay:</em> Hybrid hunter with anti-magic tools and execution mechanics.<br>
+      <q>Light the pyre where the witch once stood.</q>`
+    },
+    {
+      name: "Wardstriker",
+      desc: `<strong>(Light Armor / 1H Dagger / Restoration Wards)</strong><br>
+      Agile duelists who use warded strikes to break enemy magic and morale.<br>
+      <em>Gameplay:</em> Hybrid strike-and-ward fighter with anti-magic maneuvers.<br>
+      <q>A ward to the eye, a blade to the throat.</q>`
+    },
+    {
+      name: "Witcher",
+      desc: `<strong>(2H / Light Armor / Alchemy)</strong><br>
+      Seasoned monster-hunters trained to exploit evils with potions and signs.<br>
+      <em>Gameplay:</em> Specialist fighter mixing oils, bombs and combat signs.<br>
+      <q>Monsters mark when you stop running.</q>`
+    },
+    {
+      name: "Explorer",
+      desc: `<strong>(Light Armor / Whip or Club / Block / Torch)</strong><br>
+      Versatile scavengers who excel at survival, traps and unconventional weaponry.<br>
+      <em>Gameplay:</em> Utility hybrid using environment, tools and explorative perks.<br>
+      <q>Maps tell a story; I read between the lines.</q>`
+    },
+    {
+      name: "Gandalf",
+      desc: `<strong>(Robes / Enchanting Staff / 1H Sword)</strong><br>
+      Legendary arch-scholars and mentors—masters of both lore and practical magicks.<br>
+      <em>Gameplay:</em> Versatile caster/mentor archetype with unique implement synergies.<br>
+      <q>Books teach what the blade remembers.</q>`
+    }
+  ],
+};
+
+
+
+// ----------------- COMPENDIUM SCRIPT -----------------
+
+// ✅ Kompendium (pozostaw Twoje const compendium = { ... } bez zmian)
+
+// --- Obsługa kategorii, wyszukiwania i aktywnych przycisków ---
+
+const searchInput = document.getElementById("classSearch");
+const clearBtn = document.getElementById("clearSearch");
+const listDiv = document.getElementById("classList");
+let currentCategory = null;
+
+// Funkcja renderująca klasy
+function renderClasses(list) {
+  listDiv.innerHTML = list
+    .map(
+      (c) => `
+      <div class="class-entry">
+        <h3>${c.name.toUpperCase()}</h3>
+        <p>${c.desc}</p>
+      </div>`
+    )
+    .join("");
+}
+
+// Funkcja czyszcząca podświetlenie aktywnych kategorii
+function clearActiveButtons() {
+  document.querySelectorAll(".cat-btn").forEach((b) => b.classList.remove("active"));
+}
+
+// Obsługa kliknięcia kategorii
+document.querySelectorAll(".cat-btn").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const cat = btn.dataset.cat.toUpperCase();
+    // Jeżeli kliknięto ponownie tę samą kategorię — odkliknij
+    if (currentCategory === cat) {
+      currentCategory = null;
+      clearActiveButtons();
+      listDiv.innerHTML = "";
+      return;
+    }
+
+    currentCategory = cat;
+    clearActiveButtons();
+    btn.classList.add("active");
+
+    if (compendium[cat]) {
+      renderClasses(compendium[cat]);
+    }
+  });
+});
+
+// Obsługa wyszukiwania
+searchInput.addEventListener("input", () => {
+  const query = searchInput.value.toLowerCase();
+
+  if (!query) {
+    if (currentCategory) renderClasses(compendium[currentCategory]);
+    else listDiv.innerHTML = "";
+    return;
+  }
+
+  const categories = currentCategory ? [currentCategory] : Object.keys(compendium);
+  let results = [];
+
+  categories.forEach((cat) => {
+    if (compendium[cat]) {
+      results.push(
+        ...compendium[cat].filter((c) =>
+          c.name.toLowerCase().includes(query)
+        )
+      );
+    }
+  });
+
+  renderClasses(results);
+});
+
+// Obsługa przycisku czyszczenia
+clearBtn.addEventListener("click", () => {
+  searchInput.value = "";
+  if (currentCategory) renderClasses(compendium[currentCategory]);
+  else listDiv.innerHTML = "";
+  searchInput.focus();
+});
+
+// Modal – bez zmian
+document.getElementById("compendiumButton").addEventListener("click", () => {
+  document.getElementById("compendiumModal").style.display = "flex";
+  playSound("soul-gather");
+});
+
+document.getElementById("closeCompendium").addEventListener("click", () => {
+  document.getElementById("compendiumModal").style.display = "none";
+});
+
+function playSound(file) {
+  const s = new Audio(`${file}.mp3`);
+  s.volume = 0.5;
+  s.play();
+}
+
   </script>
 
 
