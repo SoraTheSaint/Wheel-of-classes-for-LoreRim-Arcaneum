@@ -618,6 +618,7 @@
   <audio id="soundSelect" src="area.mp3" preload="auto"></audio>
   <audio id="soundEnd" src="you-died.mp3" preload="auto"></audio>
   <audio id="soundShuffle" src="soul-gather.mp3" preload="auto"></audio>
+  <audio id="soundscompendium" src="parry.mp3" preload="auto"></audio>
 
 
   <script>
@@ -1870,7 +1871,7 @@ clearBtn.addEventListener("click", () => {
 // Modal – bez zmian
 document.getElementById("compendiumButton").addEventListener("click", () => {
   document.getElementById("compendiumModal").style.display = "flex";
-  playSound("soul-gather");
+  playSound("parry");
 });
 
 document.getElementById("closeCompendium").addEventListener("click", () => {
