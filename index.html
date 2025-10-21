@@ -635,27 +635,28 @@
 
     const originalSegments = [
       "Aethermage (Lightning Magic/Heavy Armor/trait 'Focused Magic')",
-      "Aether Dragoon (Heavy Armor / 2H Spear / Destro Lightning Cloak)",
+      "Aether Dragoon (Heavy Armor / 2H Spear / Destro Lightning Cloak/Trait 'Touch of the Arcane')",
       "Alchemist (Light Armor/Alchemy/Traps/Poisons)",
-      "Ancient Runesmith (Heavy Armor / Dwemer Smithing / Enchanting / Magic Runes/ Runemaster/ Wayfarer Automatons/Trait 'Disbeliever')",
-      "Arcane Mage (Robes/Arcane Destro/Trait 'Focused Magic')",
+      "Ancient Runesmith (Heavy Armor / Dwemer Smithing / Enchanting Magic Runes/ Lightning Destro Runes / Wayfarer Automatons/Trait 'Disbeliever')",
+      "Arcane Mage (Robes/Arcane Destro/Trait 'Balanced Casting')",
+      "Arcanum Knight (Heavy Armor / Arcane Destruction / Wards / 1h Sword or Mace)",
       "Ashblade Dervish (Light Armor/Scimitar/Destruction Fire Touch spells)",
       "Ash Prophet (Unarmored/Staff/Fire Destro/Speech)",
       "Ashen Cleric (Heavy Armor/Fire Destro/Restoration)",
       "Assassin (Stealth/Dagger/Alchemy (Poison-focused)/Throwing Knives Archery)",
-      "Aurafist (Unarmed/Restoration/Alteration)",
+      "Aurafist (Unarmed/Auras Restoration/Armor Alteration)",
       "Archmage (Every School of Magic/Trait 'Self-taught'/Trait 'Skilled'/Deity 'Magnus'/Destiny Archmage/Only Mage's Robes)",
-      "Battlemage (HA/Destro Touch spell/Quarter Staff)",
+      "Battlemage (Heavy Armor/Destro Touch spell/Quarter Staff)",
       "Berserker (2H Axe/Unarmored/trait 'Rage'/Trait 'Big Swing')",
-      "Black Crusader (Greatsword/Heavy Armor/Entropy/Restoration Poison)",
+      "Black Crusader (Greatsword/Heavy Armor/Entropy Destruction/Restoration Poison)",
       "Blightborn (Robes/Alchemy/Restoration Poison/Trait 'Defiler')",
       "Blight Surgeon (Light Armor/Crossbow/Alchemy/Restoration Poison)",
-      "Boltwarden (Heavy Armor/Heavy Crossbow)",
+      "Boltwarden (Heavy Armor/Heavy Crossbow/trait 'Focused Precision')",
       "Brawler (Unarmored/Unarmed/No spells/Dodge)",
-      "Brewmaster (Staff/Alchemy/Trait 'Addict')",
+      "Brewmaster (2h Battlestaff/Alchemy/Trait 'Addict')",
       "Companion of Jorrvaskr (Heavy Armor 'Wolf Armor'/2H Axe/Werewolf)",
-      "Cryomancer (Robes/Cryo Destro/Trait 'Focused Magic')",
-      "Cindersaint (Robes/Destro Fire/Restoration/Speech)",
+      "Cryomancer (Robes/Cryo Destruction/Trait 'Focused Magic')",
+      "Cindersaint (Robes/Destruction Fire/Restoration/Speech)",
       "Crimson Reaver (Light Armor/1h axe/Blood Magic/*vampirism*)",
       "Dawnguard Sentinel (Restoration/Archery) <by Cor Wulfgar>",
       "Death Knight (2H/Heavy Armor/Conjuration Necro)",
@@ -673,7 +674,7 @@
       "Gambler (Light Armor/Dual Daggers/Trait 'Gambler'/No Sneak)",
       "Gandalf (Robes/Enchanting Staff/1h sword)",
       "General (Speech/1H sword/Heavy Armor/Block/followers)",
-      "Geomancer (Alteration Earth/Light Armor)",
+      "Geomancer (Alteration Earth/Light Armor/trait 'Focused Magic')",
       "Graveblade (1H/Summon Undead/Unarmored/Lockpicking)",
       "Gravelord (Light Armor/Greatsword/Conjuration Necro/Alteration)",
       "Gravewarden (Heavy Armor/Warhammer/Restoration/Conjuration Spirits)",
@@ -682,13 +683,13 @@
       "Guttersnipe (Unarmed/Finesse/Sneak/Trait 'Lurker'/Trait 'Nosferatu')",
       "Harbinger of Oblivion (Conjuration/Destruction/Only deadric items)",
       "Hematist (Robes/Blood destro/Trait 'Focused Magic')",
-      "Hexblade (Bound Sword/Conjuration/Fire Destro)",
+      "Hexblade (Bound Sword/Conjuration/Fire Destro/ Illusion Expert Life Tap)",
       "Hunter (Light Armor/Light Bow/Trait 'Fast Shot')",
       "Iron Rose/Duelist (Rapier with empty hand perk/Light Armor/Trait 'Fencer')",
       "Mesmer (Robes/Shadow Illusion/Rapier)",
       "Necromancer (Conjuration Necro/Trait 'Plagued Mind')",
       "Nightblade (Light Armor/Sneak/Illusion)",
-      "Oathbound Defender (1H/Block/Restoration/Speech/Heavy Armor)",
+      "Oathbound Defender (1H/Block/Restoration/Speech/Heavy Armor/Restoration Auras)",
       "Occultist (Robes/Entropy/Conjuration/Scrolls)",
       "Paladin of Meridia (1h/Sun Resto/Heavy Armor/Trait 'Sunkissed'/Deity Meridia)",
       "Phantom Ranger (Sneak/Bound Bow/Light Armor)",
@@ -703,15 +704,15 @@
       "Runecaster (Robes/Runes Destruction/Runes Restoration/Alchemy)",
       "Runespear (Light Armor/Enchanting/Alteration/2h Spear)",
       "Rune Witch (Robes/Illusion Runes/Alteration Runes/Alchemy)",
-      "Sanguine Warlord (2H Sword/Heavy Armor/Blood cloak/trait 'Blood Warrior')",
+      "Sanguine Warlord (2H Axe/Heavy Armor/Blood cloak/trait 'Blood Warrior')",
       "Swift Guardian (Light Armor/1h sword/Block)",
       "Shadowdancer (Light Armor/Shadow & Perceptual Illusion/Daggers/No sneak)",
-      "Silver Ranger (Light Armor/Bow/Smithing Silver Arrows/Restoration)",
+      "Silver Ranger (Light Armor/Bow/Smithing Silver Arrows/Restoration Sun)",
       "Sith (1h sword/Destro Lightning/Alteration)",
       "Sniper (Heavy Bow/Light Armor/Trait 'Disciplined')",
       "Spellbreaker (Heavy Armor/Alteration/1H + Shield/No Enchanting)",
       "Spellforged Knight (Heavy Armor/Enchanting trait/1H + Shield)",
-      "Spiritcaller (Forsworn Armor/Staff/Spirit Conjuration/Alteration)",
+      "Spiritcaller (Forsworn Armor/Staff/Spirit Conjuration/Alteration Mage Armor)",
       "Spiritstalker (Light Armor/Bow/Spirit Conjuration)",
       "Stendar Zealot (2H/Unarmored/Block/Deity 'Stendar')",
       "Stormsinger (Shouts/Illusion/Lightning Destro)",
@@ -1036,14 +1037,14 @@ document.getElementById('shuffleButton').addEventListener('click', () => {
     },
     {
       name: "Aether Dragoon",
-      desc: `<strong>(Heavy Armor / 2H Spear / Lightning Cloak)</strong><br>
+      desc: `<strong>(Heavy Armor / 2H Spear / Lightning Cloak / Trait 'Touch of the Arcane')</strong><br>
       Armored magi who spear the heavens themselves, channeling lightning through devastating aerial strikes.<br>
       <em>Gameplay:</em> Mobile heavy fighter with lightning-boosted charge attacks.<br>
       <q>To leap is to defy gods — to strike is to join them.</q>`
     },
     {
       name: "Arcane Mage",
-      desc: `<strong>(Robes / Arcane Destruction)</strong><br>
+      desc: `<strong>(Robes / Arcane Destruction / Trait 'Balanced Casting')</strong><br>
       A disciplined scholar of the weave, wielding precise arcane flames and subtle formulas.<br>
       <em>Gameplay:</em> High-damage, mana-efficient destruction specialist.<br>
       <q>Power is nothing without precision.</q>`
@@ -1057,14 +1058,14 @@ document.getElementById('shuffleButton').addEventListener('click', () => {
     },
     {
       name: "Cryomancer",
-      desc: `<strong>(Robes / Frost Destruction)</strong><br>
+      desc: `<strong>(Robes / Frost Destruction / Trait 'Balanced Casting')</strong><br>
       Masters of stillness and preservation, commanding frost that slows flesh and spirit.<br>
       <em>Gameplay:</em> Crowd control and attrition via frost spells and slowing effects.<br>
       <q>Time itself freezes before me.</q>`
     },
     {
       name: "Electromancer",
-      desc: `<strong>(Robes / Lightning Destruction)</strong><br>
+      desc: `<strong>(Robes / Lightning Destruction /Trait 'Balanced Casting')</strong><br>
       Electric fury embodied — Electromancers weave bolts that leap between foes.<br>
       <em>Gameplay:</em> Fast, aggressive mage emphasizing chain lightning damage.<br>
       <q>Every heartbeat is thunder waiting to strike.</q>`
@@ -1078,7 +1079,7 @@ document.getElementById('shuffleButton').addEventListener('click', () => {
     },
     {
       name: "Frostwarden",
-      desc: `<strong>(Light Armor / Frost Destruction / Shield or Wards)</strong><br>
+      desc: `<strong>(Light Armor / Frost Destruction / Shield or Wards / Trait 'Balanced Casting')</strong><br>
       Guardians of glacial sanctums who weave frost and faith into barriers of ice and light.<br>
       <em>Gameplay:</em> Defensive mage using frost magic and wards for protection and control.<br>
       <q>Cold hardens what fear would shatter.</q>`
@@ -1155,7 +1156,7 @@ document.getElementById('shuffleButton').addEventListener('click', () => {
     },
     {
       name: "Hexblade",
-      desc: `<strong>(Bound Sword / Conjuration / Fire Destruction)</strong><br>
+      desc: `<strong>(Bound Sword / Conjuration / Fire Destruction / Illusion Expert Life Tap)</strong><br>
       A mystic warrior who fights through weaponized pacts and flame.<br>
       <em>Gameplay:</em> Melee-magic hybrid with bound weapon buffs and fire damage.<br>
       <q>My blade answers the bargain in blood.</q>`
@@ -1352,10 +1353,17 @@ document.getElementById('shuffleButton').addEventListener('click', () => {
     },
     {
       name: "Ancient Runesmith",
-      desc: `<strong>(Heavy Armor / Dwemer Smithing / Enchanting / Runemaster)</strong><br>
+      desc: `<strong>(Heavy Armor / Dwemer Smithing / Enchanting Magic Runes/ Lightning Destro Runes / Wayfarer Automatons/Trait 'Disbeliever')</strong><br>
       Lost smiths who infuse metal with runes and steam-wrought automatons.<br>
       <em>Gameplay:</em> Craft-and-fight hybrid with constructs and rune weapons.<br>
       <q>Metal remembers the hands that bent it.</q>`
+    },
+    {
+      name: "Arcanum Knight",
+      desc: `<strong>(Heavy Armor / Arcane Destruction / Wards / 1h Sword or Mace)</strong><br>
+      Arcane warriors who blend martial prowess with destructive magic.<br>
+      <em>Gameplay:</em> Versatile fighter using wards and spells to control the battlefield.<br>
+      <q>Steel and sorcery are my allies.</q>`
     },
     {
       name: "Ashblade Dervish",
@@ -1415,14 +1423,14 @@ document.getElementById('shuffleButton').addEventListener('click', () => {
     },
     {
       name: "Sanguine Warlord",
-      desc: `<strong>(2H Sword / Heavy Armor / Blood Cloak)</strong><br>
+      desc: `<strong>(2H Axe / Heavy Armor / Blood Cloak)</strong><br>
       Cursed captains who feast on life to heighten their warcraft.<br>
       <em>Gameplay:</em> Blood-leeching bruiser with self-sustain and bleed mechanics.<br>
       <q>Drink deep, bleed deeper.</q>`
     },
     {
       name: "Spiritcaller",
-      desc: `<strong>(Forsworn Armor / Staff / Spirit Conjuration / Alteration)</strong><br>
+      desc: `<strong>(Forsworn Armor / Staff / Spirit Conjuration / Alteration Mage Armor)</strong><br>
       Shamans who summon ancestral spirits and bind nature to their will.<br>
       <em>Gameplay:</em> Summoner hybrid focusing on spirits and battlefield control.<br>
       <q>They follow when I call; they obey when I bind.</q>`
@@ -1717,13 +1725,6 @@ document.getElementById('shuffleButton').addEventListener('click', () => {
       Field medics turned plague-smiths who weaponize disease to both heal and harm.<br>
       <em>Gameplay:</em> Tactical hybrid applying toxins and medical tricks.<br>
       <q>To fix flesh, first understand rot.</q>`
-    },
-    {
-      name: "Sanguine Warlord",
-      desc: `<strong>(2H Sword / Heavy Armor / Blood Cloak)</strong><br>
-      Blood-warriors who use vampiric rituals to fortify their battlefield presence.<br>
-      <em>Gameplay:</em> Sustained melee bruiser who steals and returns vitality.<br>
-      <q>Blood commands the living as it did the dead.</q>`
     }
   ],
 
