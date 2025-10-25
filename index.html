@@ -639,7 +639,6 @@
       "Aetherlord of Eternia (Heavy Armor / 2H Hammer / Destruction Lightning Cloak / Shouts)",
       "Alchemist (Light Armor/Alchemy/Traps/Poisons)",
       "Ancient Runesmith (Heavy Armor / Dwemer Smithing / Enchanting Magic Runes/ Lightning Destro Runes / Wayfarer Automatons/Trait 'Disbeliever')",
-      "Arcane Mage (Robes/Arcane Destro/Trait 'Balanced Casting')",
       "Arcanum Knight (Heavy Armor / Arcane Destruction / Wards / 1h Sword or Mace)",
       "Ashblade Dervish (Light Armor/Scimitar/Destruction Fire Touch spells)",
       "Ash Prophet (Unarmored/Staff/Fire Destro/Speech)",
@@ -659,12 +658,13 @@
       "Cryomancer (Robes/Cryo Destruction/Trait 'Focused Magic')",
       "Cindersaint (Robes/Destruction Fire/Restoration/Speech)",
       "Crimson Reaver (Light Armor/1h axe/Blood Magic/*vampirism*)",
-      "Dawnguard Sentinel (Restoration/Archery) <by Cor Wulfgar>",
+      "Dawnguard Sentinel (Light Armor/Restoration Sun/Archery) <by Cor Wulfgar>",
       "Death Knight (2H/Heavy Armor/Conjuration Necro)",
       "Dragon Monk (Unarmed/Unarmored/Shouts/Alteration)",
-      "Dragon Slayer (Light Armor/Nodachi 2h)",
+      "Dragon Slayer (Light Armor/Nodachi 2h/Shouts)",
       "Dragonborn of the North (1h/Block/Shouts/Heavy Armor/Trait 'Old Fashioned'/Trait 'Quester')",
       "Dragoon (Heavy Armor/2H Spear/Horse Combat)",
+      "Dreamwalker (Robes/Shadow & Delusive Illusion/Alteration/Speech)",
       "Druid (Alteration Transform/Light Armor/Conjuration Spirit/Trait 'Druid')",
       "Electromancer (Robes/Lightning Destro/Trait 'Focused Magic')",
       "Elementalist (Fire/Cryo/Lightning Destro/Trait 'Elemental Conduit')",
@@ -688,17 +688,18 @@
       "Hunter (Light Armor/Light Bow/Trait 'Fast Shot')",
       "Iron Rose/Duelist (Rapier with empty hand perk/Light Armor/Trait 'Fencer')",
       "Lupine Crusader (Heavy Armor/2H Greatsword/Restoration & Blood Magic/Shouts)",
+      "Manaweaver (Robes/Arcane Destro/Trait 'Balanced Casting')",
       "Mesmer (Robes/Shadow Illusion/Rapier)",
       "Necromancer (Conjuration Necro/Trait 'Plagued Mind')",
       "Nightblade (Light Armor/Sneak/Illusion)",
       "Oathbound Defender (1H/Block/Restoration/Speech/Heavy Armor/Restoration Auras)",
+      "Oblivion Vanguard (Light Armor / 2H Sword / Entropy Destruction / Shouts)",
       "Occultist (Robes/Entropy/Conjuration/Scrolls)",
       "Paladin of Meridia (1h/Sun Resto/Heavy Armor/Trait 'Sunkissed'/Deity Meridia)",
       "Phantom Ranger (Sneak/Bound Bow/Light Armor)",
       "Plague Knight (Heavy Armor/Mace/Restoration Poison/Trait 'Balanced Casting')",
       "Plague Prophet (Unarmored/Staff or Mace/Restoration Poison/Entropy)",
-      "Priestess of Dibella (Female/Illusion/Speech/Trait 'Au Naturel')",
-      "Dreamwalker (Delusive Illusion/Alteration/Speech)",
+      "Priestess of Dibella (Female/Emotional & Delusive Illusion/Speech/Trait 'Au Naturel')",
       "Priestess of Mara (Robes/Restoration Healing & Wards/Speech)",
       "Primal Forsworn (Dual Axes/Alteration/Spirit Conjuration/Forsworn Armor)",
       "Runeblade Templar (Heavy Armor/1h sword/Alteration Runes/Enchanting)",
@@ -707,7 +708,7 @@
       "Runespear (Light Armor/Enchanting/Alteration/2h Spear)",
       "Rune Witch (Robes/Illusion Runes/Alteration Runes/Alchemy)",
       "Sanguine Warlord (2H Axe/Heavy Armor/Blood cloak/trait 'Blood Warrior')",
-      "Swift Guardian (Light Armor/1h sword/Block)",
+      "Swift Guardian (Light Armor/1h sword/Block/trait 'Unshakable')",
       "Shadowdancer (Light Armor/Shadow & Perceptual Illusion/Daggers/No sneak)",
       "Silver Ranger (Light Armor/Bow/Smithing Silver Arrows/Restoration Sun)",
       "Sith (1h sword/Destro Lightning/Alteration)",
@@ -733,7 +734,7 @@
       "Vigilant Exorcist (Light Armor/Mace/Restoration Turn Undead & Wards/Scrolls)",
       "Wardstriker (Light Armor/1h Dagger/Restoration Wards)",
       "Witch Hunter (Bound Xbow/Light Armor/Destro Entropy)",
-      "Witcher (2h/Light Armor/Alchemy)",
+      "Witcher (2h/Light Armor/Alchemy/trait 'Witcher')",
       "Wizard (Enchanting/Destro/only Wands/Trait 'Wizard's Wardrobe')",
       "Warlock (Robes/Destruction/Conjuration/Illusion)",
       "Wyrdsinger (Light Armor/Staff/Illusion/Speech Bard)",
@@ -1025,7 +1026,7 @@ document.getElementById('shuffleButton').addEventListener('click', () => {
   "ARCANE ORDERS": [
     {
       name: "Archmage",
-      desc: `<strong>(All Schools / Robes / Deity Magnus/Trait 'Self-taught')</strong><br>
+      desc: `<strong>(All Schools / Robes / Deity Magnus /Trait 'Self-taught')</strong><br>
       The ultimate scholar, master of every discipline of magic. Their words can heal, destroy, and reshape the world.<br>
       <em>Gameplay:</em> Late-game powerhouse excelling in adaptability.<br>
       <q>Magnus lit the stars; I merely follow their script.</q>`
@@ -1045,7 +1046,7 @@ document.getElementById('shuffleButton').addEventListener('click', () => {
       <q>To leap is to defy gods — to strike is to join them.</q>`
     },
     {
-      name: "Arcane Mage",
+      name: "Manaweaver",
       desc: `<strong>(Robes / Arcane Destruction / Trait 'Balanced Casting')</strong><br>
       A disciplined scholar of the weave, wielding precise arcane flames and subtle formulas.<br>
       <em>Gameplay:</em> High-damage, mana-efficient destruction specialist.<br>
@@ -1274,7 +1275,7 @@ document.getElementById('shuffleButton').addEventListener('click', () => {
     },
     {
       name: "Dragon Slayer",
-      desc: `<strong>(Light Armor / Nodachi / Two-Handed)</strong><br>
+      desc: `<strong>(Light Armor / Nodachi Two-Handed/Shouts)</strong><br>
       Nomadic hunters dedicated to slaying scaled titans.<br>
       <em>Gameplay:</em> High-risk melee specialist using mobility and precision.<br>
       <q>Every dragon bleeds if struck true.</q>`
@@ -1425,6 +1426,12 @@ document.getElementById('shuffleButton').addEventListener('click', () => {
       Ascetic warriors who channel draconic shouts into barehanded techniques.<br>
       <em>Gameplay:</em> Agile unarmed fighter combining shouts and altered movement.<br>
       <q>Strike like a dragon, move like the wind.</q>`
+    },
+    { name: "Oblivion Vanguard",
+      desc: `<strong>(Light Armor / 2H Sword / Entropy Destruction / Shouts)</strong><br>
+      Daedric champions who channel the chaotic essence of Oblivion through both blade and voice. Their strikes rend the veil between worlds, unleashing entropic storms upon their foes.<br>
+      <em>Gameplay:</em> Fast and aggressive two-handed combatant who weaves shouts and entropy magic into a relentless offensive flow.<br>
+      <q>The void does not whisper — it screams through me.</q>`
     },
     {
       name: "Primal Forsworn",
@@ -1589,7 +1596,7 @@ document.getElementById('shuffleButton').addEventListener('click', () => {
     },
     {
       name: "Priestess of Dibella",
-      desc: `<strong>(Female / Illusion / Speech / Trait 'Au Naturel')</strong><br>
+      desc: `<strong>(Female/Emotional & Delusive Illusion/Speech/Trait 'Au Naturel')</strong><br>
       Priestesses who inspire through grace and persuasion rather than violence.<br>
       <em>Gameplay:</em> Support illusionist who charms and distracts enemies.<br>
       <q>Beauty itself is a weapon.</q>`
@@ -1638,7 +1645,7 @@ document.getElementById('shuffleButton').addEventListener('click', () => {
     },
     {
       name: "Dawnguard Sentinel",
-      desc: `<strong>(Restoration / Archery)</strong><br>
+      desc: `<strong>(Light Armor / Restoration / Archery)</strong><br>
       Sentinels sworn to stand against vampiric and daedric threats with sun-kissed skills.<br>
       <em>Gameplay:</em> Support-archetype blending archery with restorative magics.<br>
       <q>The dawn is our blade.</q>`
@@ -1652,7 +1659,7 @@ document.getElementById('shuffleButton').addEventListener('click', () => {
     },
     {
       name: "Dreamwalker",
-      desc: `<strong>(Illusion / Alteration / Speech)</strong><br>
+      desc: `<strong>(Robes/Shadow & Delusive Illusion/Alteration/Speech)</strong><br>
       Mystical seers who walk the edges of dreams to bend reality.<br>
       <em>Gameplay:</em> Illusion-support hybrid manipulating perception and morale.<br>
       <q>What you dream often wakes as truth.</q>`
