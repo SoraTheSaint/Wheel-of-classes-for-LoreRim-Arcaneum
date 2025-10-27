@@ -682,7 +682,7 @@
       "Greybeard (Unarmored/Speech/Alteration)",
       "Guru (Robes/Alteration Wind/Emotional Illusion)",
       "Guttersnipe (Unarmed/Finesse/Sneak/Trait 'Lurker'/Trait 'Nosferatu')",
-      "Harbinger of Oblivion (Conjuration/Destruction/Only deadric items)",
+      "Harbinger of Oblivion (Conjuration/Fire Destruction/Only deadric items)",
       "Hematist (Robes/Blood destro/Trait 'Focused Magic')",
       "Hexblade (Bound Sword/Conjuration/Fire Destro/ Illusion Expert Life Tap)",
       "Hunter (Light Armor/Light Bow/Trait 'Fast Shot')",
@@ -693,8 +693,7 @@
       "Necromancer (Conjuration Necro/Trait 'Plagued Mind')",
       "Nightblade (Light Armor/Sneak/Illusion)",
       "Oathbound Defender (1H/Block/Restoration/Speech/Heavy Armor/Restoration Auras)",
-      "Oblivion Vanguard (Light Armor / 2H Sword / Entropy Destruction / Shouts)",
-      "Occultist (Robes/Entropy/Conjuration/Scrolls)",
+      "Oblivion Vanguard (Light Armor / Bound Greatsword / Entropy Cloak / Shouts)",
       "Paladin of Meridia (1h/Sun Resto/Heavy Armor/Trait 'Sunkissed'/Deity Meridia)",
       "Phantom Ranger (Sneak/Bound Bow/Light Armor)",
       "Plague Knight (Heavy Armor/Mace/Restoration Poison/Trait 'Balanced Casting')",
@@ -731,6 +730,7 @@
       "Totem Reaver (Light Armor/1h Mace/Triumvirate Totems/Alteration)",
       "Veteran of the Forge (Smithing/1h Mace/Heavy Armor/Deity Zenithar)",
       "Voicebreaker (Heavy Armor/Warhammer/Shouts)",
+      "Void Scholar (Robes/Entropy/Conjuration/Scrolls)",
       "Vigilant Exorcist (Light Armor/Mace/Restoration Turn Undead & Wards/Scrolls)",
       "Wardstriker (Light Armor/1h Dagger/Restoration Wards)",
       "Witch Hunter (Bound Xbow/Light Armor/Destro Entropy)",
@@ -1165,11 +1165,11 @@ document.getElementById('shuffleButton').addEventListener('click', () => {
       <q>My blade answers the bargain in blood.</q>`
     },
     {
-      name: "Occultist",
+      name: "Void Scholar",
       desc: `<strong>(Robes / Entropy / Conjuration / Scrolls)</strong><br>
-      Arcanists who harvest forbidden lore, using scrolls and entropy to unravel foes.<br>
-      <em>Gameplay:</em> Utility caster specializing in debuffs and summoned horrors.<br>
-      <q>Knowledge is a key; some doors do not need opening.</q>`
+      Seekers of forbidden knowledge who transcribe the whispers of the Void into living scripture.<br>
+      <em>Gameplay:</em> Masters of entropy and summoning, using scrolls and daedric insight to manipulate the fabric of magic itself.<br>
+      <q>The Void does not speak—it remembers, and I am its echo.</q>`
     },
     {
       name: "Mesmer",
@@ -1427,11 +1427,12 @@ document.getElementById('shuffleButton').addEventListener('click', () => {
       <em>Gameplay:</em> Agile unarmed fighter combining shouts and altered movement.<br>
       <q>Strike like a dragon, move like the wind.</q>`
     },
-    { name: "Oblivion Vanguard",
-      desc: `<strong>(Light Armor / 2H Sword / Entropy Destruction / Shouts)</strong><br>
-      Daedric champions who channel the chaotic essence of Oblivion through both blade and voice. Their strikes rend the veil between worlds, unleashing entropic storms upon their foes.<br>
-      <em>Gameplay:</em> Fast and aggressive two-handed combatant who weaves shouts and entropy magic into a relentless offensive flow.<br>
-      <q>The void does not whisper — it screams through me.</q>`
+    { 
+      name: "Oblivion Vanguard",
+      desc: `<strong>(Light Armor / Bound Greatsword / Entropy Cloak / Shouts)</strong><br>
+      Daedric champions born from the Void, wielding bound greatswords forged of pure entropy. Their very presence corrodes the mortal world, and their Thu’um echoes with the hunger of Oblivion itself.<br>
+      <em>Gameplay:</em> A two-handed bound warrior who channels entropy through destructive cloaks and devastating shouts.<br>
+      <q>I am the will of the Void made flesh — unmake yourself before me.</q>`
     },
     {
       name: "Primal Forsworn",
@@ -1677,7 +1678,7 @@ document.getElementById('shuffleButton').addEventListener('click', () => {
     },
     {
       name: "Harbinger of Oblivion",
-      desc: `<strong>(Conjuration / Destruction / Daedric-only Equipment)</strong><br>
+      desc: `<strong>(Conjuration / Fire Destruction / Daedric-only Equipment)</strong><br>
       Daedra-touched sorcerers who channel power from Oblivion itself.<br>
       <em>Gameplay:</em> High-risk caster wielding unstable daedric conjurations.<br>
       <q>I burn with the fire of a thousand realms.</q>`
