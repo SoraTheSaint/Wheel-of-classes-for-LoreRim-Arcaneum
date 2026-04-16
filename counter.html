@@ -3,30 +3,61 @@
 <head>
   <meta charset="utf-8">
 <style>
-    #counter {
-  font-size: 68px;               /* mniejszy na mobile */
-  font-family: "Ghastly Panic", cursive;
-  color: red;
-  line-height: 1;                /* żadnych dodatkowych odstępów */
-  display: inline-block;         /* wysokość = wysokość tekstu */
-  margin: 0;
-  padding: 0;
-}
-body {
-  margin: 0;
-  padding: 0;
-  background: transparent;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;                  /* żeby nie rozciągało body */
-}
+    @import url('https://fonts.googleapis.com/css2?family=Ghastly+Panic&display=swap');
+    
+    body {
+      margin: 0;
+      padding: 0;
+      background: transparent;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
 
+    #counter {
+      font-size: 68px;
+      font-family: "Ghastly Panic", cursive;
+      line-height: 1;
+      display: inline-block;
+      margin: 0;
+      padding: 0;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      
+      /* Krwistoczerwony gradient */
+      background: linear-gradient(180deg, 
+        #8B0000 0%, 
+        #dc143c 40%, 
+        #ff4444 60%,
+        #8B0000 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      
+      /* Efekt świecenia */
+      filter: drop-shadow(0 0 8px rgba(220, 20, 60, 0.6))
+              drop-shadow(0 2px 4px rgba(0, 0, 0, 0.9));
+      
+      /* Animacja pulsowania */
+      animation: bloodPulse 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes bloodPulse {
+      from {
+        filter: drop-shadow(0 0 5px rgba(220, 20, 60, 0.4))
+                drop-shadow(0 2px 4px rgba(0, 0, 0, 0.9));
+      }
+      to {
+        filter: drop-shadow(0 0 15px rgba(220, 20, 60, 0.8))
+                drop-shadow(0 2px 4px rgba(0, 0, 0, 0.9));
+      }
+    }
 
     @media (max-width: 768px) {
       #counter {
-        font-size: 48px;     /* mniejszy na mobile */
+        font-size: 48px;
       }
     }
   </style>
@@ -37,7 +68,7 @@ body {
   <script>
     function updateCounter() {
       const count = parseInt(localStorage.getItem("spinCount")) || 0;
-      document.getElementById("counter").textContent = "Deaths : " + count;
+      document.getElementById("counter").textContent = "Deaths: " + count;
     }
 // ← aaaa
     updateCounter();

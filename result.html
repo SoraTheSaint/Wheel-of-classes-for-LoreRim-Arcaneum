@@ -3,17 +3,40 @@
 <head>
   <meta charset="utf-8">
   <style>
-    body {
+body{
+      color: #ffffff;
+      text-transform: uppercase;
+      border-radius: 10px;
+      border: 1px solid #c4c4c4;
+      box-shadow: 0 0 6px #000;    
+      font-size: 68px;
+      font-family: 'Diablo', serif;
+      line-height: 1;
+      display: inline-block;
       margin: 0;
-      background: transparent;
-      font-size: 30px;
-      font-family: Diablo;
-      color: White;
-      white-space: normal;   
-      word-wrap: break-word; 
-      overflow-wrap: break-word;
-      text-align: center;  
-      text-transform: uppercase; 
+      padding: 8px 20px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      
+      
+      
+      /* Efekt świecenia */
+      filter: drop-shadow(0 0 8px rgba(220, 20, 60, 0.6))
+              drop-shadow(0 2px 4px rgba(0, 0, 0, 0.9));
+      
+      /* Animacja pulsowania */
+      animation: bloodPulse 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes bloodPulse {
+      from {
+        filter: drop-shadow(0 0 5px rgba(220, 20, 60, 0.4))
+                drop-shadow(0 2px 4px rgba(0, 0, 0, 0.9));
+      }
+      to {
+        filter: drop-shadow(0 0 15px rgba(220, 20, 60, 0.8))
+                drop-shadow(0 2px 4px rgba(0, 0, 0, 0.9));
+      }
     }
 
     /* Mobile */
