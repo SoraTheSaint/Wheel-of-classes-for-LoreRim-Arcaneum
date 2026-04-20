@@ -1140,6 +1140,7 @@ canvas {
       "Temple Drunkard (Heavy Armor/Greatsword/Alchemy/Trait 'Addict')",
       "Thalmor Firebrand (Light Armor/Fire Destro/Trait 'Focused Magic')",
       "The Bard (Speech/Alteration Sounds/Emotional Illusion/1H/Trait 'Acoustic Arcanist'/Trait 'Fatal Attraction')",
+      "The Blank (Trait 'Master of Destiny'/Trait 'Disbeliever'/Hearvy Armor/2h weapon of choice or 1h weapon of choice + shield)",
       "The Hooked One (Argonian/1H/Enchanting/Light Armor/trait 'Angler'/Trait 'Swimmer')",
       "The Profaned Monk of Sheogorath (Unarmored/Blight Fists/Entropy/Sheogorath deity)",
       "Thornscale Saint of Arkay (Argonian/Alteration Transmutation/Restoration Heal/Heavy Armor/Deity Arkay)",
@@ -1494,7 +1495,7 @@ const classTree = {
                 desc: "Mystic who weaves illusions into runic patterns." 
               },
               "Ancient Runesmith": { 
-                skills: "Heavy Armor / Dwemer Smithing / Enchanting Magic Runes / Lightning Destro Runes / Wayfarer Automatons / Trait 'Disbeliever'",
+                skills: "Heavy Armor / Dwemer Smithing / Lightning Destro Runes / Wayfarer Automatons / Trait 'Disbeliever'",
                 desc: "Dwemer-trained forge-mage shaping automatons and enchantments." 
               }
             }
@@ -1518,13 +1519,18 @@ const classTree = {
                 skills: "Fire / Cryo / Lightning Destro / Trait 'Elemental Conduit'",
                 desc: "Master of all primal elements combined." 
               },
-              "Sith": { 
-                skills: "1h Sword / Destro Lightning / Alteration",
-                desc: "Dark channeler of lightning and fury." 
-              },
               "Thalmor Firebrand": { 
                 skills: "Light Armor / Fire Destro / Trait 'Focused Magic'",
                 desc: "Keeper of balance among the primal forces." 
+              }
+            }
+          },
+            "Thu-um": {
+            desc: "A young souls touched by the Voice, whose words carry ancient power that grows faster than their magic control.",
+            evolves: {
+              "Wyrmcaller": { 
+                skills: "Shouts / Light Armor / Conjuration Spirit",
+                desc: "Conjurer of wyrm spirits and their might by shouting." 
               }
             }
           }
@@ -1558,10 +1564,6 @@ const classTree = {
           "Voidcraft": {
             desc: "Crafters of plague and corruption.",
             evolves: {
-              "Graveblade": { 
-                skills: "1H / Summon Undead / Unarmored / Lockpicking",
-                desc: "A grave robber turned death's servant, binding souls to his cold steel." 
-              },
               "Harbinger of Oblivion": { 
                 skills: "Conjuration / Fire Destruction / Only Daedric Items",
                 desc: "A harbinger of doom, spreading decay and despair." 
@@ -1581,10 +1583,6 @@ const classTree = {
               "Plague Prophet": { 
                 skills: "Unarmored / Staff or Mace / Restoration Poison / Entropy",
                 desc: "A wandering seer who finds revelation in rot and renewal in decay." 
-              },
-              "The Profaned Monk of Sheogorath": { 
-                skills: "Unarmored / Blight Fists / Entropy / Sheogorath Deity",
-                desc: "A mad ascetic who prays through chaos and bleeds laughter." 
               },
               "Warlock": { 
                 skills: "Robes / Destruction / Conjuration / Illusion",
@@ -1626,6 +1624,10 @@ const classTree = {
               "Brawler": { 
                 skills: "Unarmored / Unarmed / No Spells / Dodge",
                 desc: "Unarmed pit-fighter thriving in chaos." 
+              },
+              "The Blank": { 
+                skills: "Trait 'Master of Destiny' / Trait 'Disbeliever' / Heavy Armor / 2h Weapon of Choice or 1h Weapon of Choice + Shield",
+                desc: "An unstoppable iconoclast who denies the stars and gods, relying solely on heavy plate and raw strength." 
               }
             }
           },
@@ -1731,7 +1733,7 @@ const classTree = {
             }
           },
           "Beastblood": {
-            desc: "Barbarians wielding primal natural forces.",
+            desc: "Mercenaries wielding primal natural forces.",
             evolves: {
               "Companion of Jorrvaskr": { 
                 skills: "Heavy Armor 'Wolf Armor' / 2H Axe / Werewolf",
@@ -1749,6 +1751,10 @@ const classTree = {
               "Arcanum Knight": { 
                 skills: "Heavy Armor / Arcane Destruction / Wards / 1h Sword or Mace",
                 desc: "Spellblade wielding arcane might." 
+              },
+              "Sith": { 
+                skills: "1h Sword / Destro Lightning / Alteration",
+                desc: "Dark channeler of lightning and fury." 
               },
               "Warcaster": { 
                 skills: "Heavy Armor / Destro Touch Spell / Quarter Staff",
@@ -1883,6 +1889,10 @@ const classTree = {
               "Guttersnipe": { 
                 skills: "Unarmed / Finesse / Sneak / Trait 'Lurker' / Trait 'Nosferatu'",
                 desc: "Predator blending motion and deception." 
+              },
+                "Graveblade": { 
+                skills: "1H / Summon Undead / Unarmored / Lockpicking",
+                desc: "A grave robber turned death's servant, binding souls to his cold steel." 
               }
             }
           }
@@ -2098,10 +2108,6 @@ const classTree = {
               "Greybeard": { 
                 skills: "Unarmored / Speech / Alteration",
                 desc: "Master of the Thu'um training in stillness and voice." 
-              },
-              "Wyrmcaller": { 
-                skills: "Shouts / Light Armor / Conjuration Spirit",
-                desc: "Conjurer of wyrm spirits and their might by shouting." 
               }
             }
           },
@@ -2111,6 +2117,10 @@ const classTree = {
               "Black Crusader": { 
                 skills: "Greatsword / Heavy Armor / Entropy Destruction / Restoration Poison",
                 desc: "Blighted holy knight spreading disease as judgment." 
+              },
+              "The Profaned Monk of Sheogorath": { 
+                skills: "Unarmored / Blight Fists / Entropy / Sheogorath Deity",
+                desc: "A mad ascetic who prays through chaos and bleeds laughter." 
               },
               "Spiritcaller": { 
                 skills: "Forsworn Armor / Staff / Spirit Conjuration / Alteration Mage Armor",
