@@ -1062,15 +1062,14 @@ canvas {
       "Ash Prophet (Unarmored/Staff/Fire Destro/Speech)",
       "Ashen Cleric (Heavy Armor/Fire Destro/Restoration)",
       "Assassin (Unarmored or Light Armor / Stealth/Dagger/Alchemy (Poison-focused)/Throwing Knives Archery)",
-      "Aurafist (Unarmed/Auras Restoration/Armor Alteration)",
       "Archmage (Every School of Magic/Trait 'Self-taught'/Trait 'Skilled'/Deity 'Magnus'/Destiny Archmage/Only Mage's Robes)",
       "Warcaster (Heavy Armor/Destro Touch spell/Quarter Staff)",
       "Berserker (2H Axe/Unarmored/trait 'Rage'/Trait 'Big Swing')",
       "Black Crusader (Greatsword/Heavy Armor/Entropy Destruction/Restoration Poison)",
       "Blightborn (Robes/Alchemy/Restoration Poison/Trait 'Defiler')",
-      "Blight Surgeon (Light Armor/Crossbow/Alchemy/Restoration Poison)",
+      "Blight Surgeon (Light Armor/Crossbow/Alchemy Poisons/Runes of Restoration Poison)",
       "Boltwarden (Heavy Armor/Heavy Crossbow/trait 'Focused Precision')",
-      "Brawler (Unarmored/Unarmed/No spells/Dodge)",
+      "Brawler (Heavy Armor/Unarmed/No spells/Dodge)",
       "Brewmaster (2h Battlestaff/Alchemy/Trait 'Addict')",
       "Companion of Jorrvaskr (Heavy Armor 'Wolf Armor'/2H Axe/Werewolf)",
       "Cryomancer (Robes/Cryo Destruction/Trait 'Focused Magic')",
@@ -1078,7 +1077,7 @@ canvas {
       "Crimson Reaver (Light Armor/1h axe/Blood Magic/*vampirism*)",
       "Dawnguard Sentinel (Light Armor/Restoration Sun/Archery) <by Cor Wulfgar>",
       "Death Knight (2H/Heavy Armor/Conjuration Necro)",
-      "Dragon Monk (Unarmed/Unarmored/Shouts/Alteration)",
+      "Dragon Monk (Unarmed/Unarmored/Shouts/Armor Alteration/Restoration Auras)",
       "Dragon Slayer (Light Armor/Nodachi 2h/Shouts)",
       "Dragonborn of the North (1h/Block/Shouts/Heavy Armor/Trait 'Old Fashioned'/Trait 'Quester')",
       "Dragoon (Heavy Armor/2H Spear/Horse Combat)",
@@ -1098,7 +1097,7 @@ canvas {
       "Gravewarden (Heavy Armor/Warhammer/Restoration/Conjuration Spirits)",
       "Greybeard (Unarmored/Speech/Alteration)",
       "Guru (Robes/Alteration Wind/Emotional Illusion)",
-      "Guttersnipe (Unarmed/Finesse/Sneak/Trait 'Lurker'/Trait 'Nosferatu')",
+      "Guttersnipe (Improvised weapons or Unarmed/Finesse/Sneak/Trait 'Lurker'/Trait 'Nosferatu')",
       "Harbinger of Oblivion (Conjuration/Fire Destruction/Only deadric items)",
       "Hematist (Robes/Blood destro/Trait 'Focused Magic')",
       "Hexblade (Bound Sword/Conjuration/Fire Destro/ Illusion Expert Life Tap)",
@@ -1116,7 +1115,7 @@ canvas {
       "Plague Knight (Heavy Armor/Mace/Restoration Poison/Trait 'Balanced Casting')",
       "Plague Prophet (Unarmored/Staff or Mace/Restoration Poison/Entropy)",
       "Priestess of Dibella (Female/Emotional & Delusive Illusion/Speech/Trait 'Au Naturel')",
-      "Priestess of Mara (Robes/Restoration Healing & Wards/Speech)",
+      "Priestess of Mara (Robes/Restoration Healing & Wards/Speech Followers/ Wayfarer Party)",
       "Primal Arcanist (Fire/Cryo/Lightning Destro/Trait 'Elemental Conduit')",
       "Primal Forsworn (Dual Axes/Alteration/Spirit Conjuration/Forsworn Armor)",
       "Runeblade Templar (Heavy Armor/1h sword/Alteration Runes/Enchanting)",
@@ -1131,8 +1130,8 @@ canvas {
       "Sith (1h sword/Destro Lightning/Alteration)",
       "Sniper (Heavy Bow/Light Armor/Trait 'Disciplined')",
       "Spellbreaker (Heavy Armor/Alteration/1H + Shield/No Enchanting)",
-      "Spellforged Knight (Heavy Armor/Enchanting trait/1H + Shield)",
-      "Spiritcaller (Forsworn Armor/Staff/Spirit Conjuration/Alteration Mage Armor)",
+      "Spellforged Knight (Heavy Armor / Trait 'Soul Reaver' / 1H + Shield)",
+      "Spiritcaller (Staff/Spirit Conjuration/Alteration Mage Armor)",
       "Spiritstalker (Light Armor/Bow/Spirit Conjuration)",
       "Stendar Zealot (2H/Unarmored/Block/Deity 'Stendar')",
       "Stormsinger (Shouts/Illusion/Lightning Destro)",
@@ -1140,7 +1139,7 @@ canvas {
       "Temple Drunkard (Heavy Armor/Greatsword/Alchemy/Trait 'Addict')",
       "Thalmor Firebrand (Light Armor/Fire Destro/Trait 'Focused Magic')",
       "The Bard (Speech/Alteration Sounds/Emotional Illusion/1H/Trait 'Acoustic Arcanist'/Trait 'Fatal Attraction')",
-      "The Blank (Trait 'Master of Destiny'/Trait 'Disbeliever'/Hearvy Armor/2h weapon of choice or 1h weapon of choice + shield)",
+      "The Blank (Trait 'Master of Destiny'/Trait 'Disbeliever')",
       "The Hooked One (Argonian/1H/Enchanting/Light Armor/trait 'Angler'/Trait 'Swimmer')",
       "The Profaned Monk of Sheogorath (Unarmored/Blight Fists/Entropy/Sheogorath deity)",
       "Thornscale Saint of Arkay (Argonian/Alteration Transmutation/Restoration Heal/Heavy Armor/Deity Arkay)",
@@ -1622,12 +1621,12 @@ const classTree = {
                 desc: "Unarmored fury incarnate, striking with reckless might." 
               },
               "Brawler": { 
-                skills: "Unarmored / Unarmed / No Spells / Dodge",
+                skills: "Heavy Armor / Unarmed / No Spells / Dodge",
                 desc: "Unarmed pit-fighter thriving in chaos." 
               },
               "The Blank": { 
-                skills: "Trait 'Master of Destiny' / Trait 'Disbeliever' / Heavy Armor / 2h Weapon of Choice or 1h Weapon of Choice + Shield",
-                desc: "An unstoppable iconoclast who denies the stars and gods, relying solely on heavy plate and raw strength." 
+                skills: "Trait 'Master of Destiny' / Trait 'Disbeliever'",
+                desc: "An unstoppable iconoclast who rejects stars and gods, relying solely on himself." 
               }
             }
           },
@@ -1662,7 +1661,7 @@ const classTree = {
             }
           },
           "Runecraft": {
-            desc: "Warriors who inscribe runes to empower their strikes and defenses.",
+            desc: "Warriors who inscribe runes to empower their strikes.",
             evolves: {
               "Runebreaker": { 
                 skills: "Heavy Armor / Warhammer / Runic Weapon Enchanting / Enchanting",
@@ -1793,7 +1792,7 @@ const classTree = {
             desc: "Masters of ancient symbols and their power.",
             evolves: {
                  "Spellforged Knight": { 
-                skills: "Heavy Armor / Enchanting Trait / 1H + Shield",
+                skills: "Heavy Armor / Trait 'Soul Reaver' / 1H + Shield",
                 desc: "Knight empowered by ancient runes." 
               }
             }
@@ -1822,7 +1821,7 @@ const classTree = {
             desc: "Masters of toxins and experimentation.",
             evolves: {
               "Alchemist": { 
-                skills: "Light Armor / Alchemy / Traps / Poisons",
+                skills: "Light Armor / Alchemy Poisons / Traps",
                 desc: "Creator of potions and bombs." 
               },
               "Assassin": { 
@@ -1860,10 +1859,6 @@ const classTree = {
           "Faithguard": {
             desc: "Holy warriors defending the sacred balance.",
             evolves: {
-              "Aurafist": { 
-                skills: "Unarmed / Auras Restoration / Armor Alteration",
-                desc: "Monk channeling sacred energy through unarmed strikes." 
-              },
               "Wardstriker": { 
                 skills: "Light Armor / 1h Dagger / Restoration Wards",
                 desc: "Sworn protector embodying faith through endurance." 
@@ -1887,7 +1882,7 @@ const classTree = {
             desc: "Experts in stealth, assassination, and subterfuge.",
             evolves: {
               "Guttersnipe": { 
-                skills: "Unarmed / Finesse / Sneak / Trait 'Lurker' / Trait 'Nosferatu'",
+                skills: "Improvised weapons or Unarmed / Finesse / Sneak / Trait 'Lurker' / Trait 'Nosferatu'",
                 desc: "Predator blending motion and deception." 
               },
                 "Graveblade": { 
@@ -1905,7 +1900,7 @@ const classTree = {
             desc: "Sharpshooters defined by precision and patience.",
             evolves: {
               "Blight Surgeon": { 
-                skills: "Light Armor / Crossbow / Alchemy / Restoration Poison",
+                skills: "Light Armor / Crossbow / Alchemy / Runes of Restoration Poison",
                 desc: "Master of toxic arrows and precision shots." 
               }
             }
@@ -2042,7 +2037,7 @@ const classTree = {
                 desc: "Radiant knight serving the Lady of Infinite Energies." 
               },
               "Priestess of Mara": { 
-                skills: "Robes / Restoration Healing & Wards / Speech",
+                skills: "Robes/Restoration Healing & Wards/Speech Followers/ Wayfarer Party",
                 desc: "Healer of compassion and unity." 
               },
               "Spellbreaker": { 
@@ -2102,8 +2097,8 @@ const classTree = {
             desc: "Clerics who harness the divine power of the voice.",
             evolves: {
               "Dragon Monk": { 
-                skills: "Unarmed / Unarmored / Shouts / Alteration",
-                desc: "Monk channeling the power of the dragon." 
+                skills: "Unarmed / Unarmored / Shouts / Armor Alteration / Restoration Auras",
+                desc: "A monk blessed by Akatosh, who draws his power from Way of the Voice." 
               },
               "Greybeard": { 
                 skills: "Unarmored / Speech / Alteration",
@@ -2123,7 +2118,7 @@ const classTree = {
                 desc: "A mad ascetic who prays through chaos and bleeds laughter." 
               },
               "Spiritcaller": { 
-                skills: "Forsworn Armor / Staff / Spirit Conjuration / Alteration Mage Armor",
+                skills: "Staff / Spirit Conjuration / Alteration Mage Armor",
                 desc: "Summoner of spirits and the lost." 
               }
             }
